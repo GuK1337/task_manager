@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node ./bin/www",
-    "sync-db": "npx tsc && node dist/syncronizeDb.js",
+    "sync-db": "node dist/syncronizeDb.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./bin/www\""
   },
   "dependencies": {

@@ -1,4 +1,5 @@
 import config from '../config';
+import * as fs from 'fs';
 import {
     Table,
     Column,
@@ -12,8 +13,30 @@ import {
     ForeignKey, NotNull, AllowNull, Unique, DataType, Default
 } from "sequelize-typescript";
 
+const {
+    POSTGRES_HOST: HOST,
+    POSTGRES_HOST_FILE: HOST_FILE,
+    POSTGRES_USER: USER,
+    POSTGRES_USER_FILE: USER_FILE,
+    POSTGRES_PASSWORD: PASSWORD,
+    POSTGRES_PASSWORD_FILE: PASSWORD_FILE,
+    POSTGRES_DB: DB,
+    POSTGRES_DB_FILE: DB_FILE,
+} = process.env;
 
-const sequelize = new Sequelize(config.get('pg'));
+const host = HOST_FILE ? fs.readFileSync(HOST_FILE).toString() : HOST;
+const user = USER_FILE ? fs.readFileSync(USER_FILE).toString() : USER;
+const password = PASSWORD_FILE ? fs.readFileSync(PASSWORD_FILE, 'utf8') : PASSWORD;
+const database = DB_FILE ? fs.readFileSync(DB_FILE).toString() : DB;
+
+  const sequelize = new Sequelize({
+    "host": host,
+    "port": 5432,
+    "database": database,
+    "username": user,
+    "password": password,
+    "dialect": "postgres",
+  });
 
 @Table
 export class User extends Model {
