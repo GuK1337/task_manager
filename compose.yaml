@@ -1,7 +1,7 @@
 services:
   server:
     build:
-      context: /node
+      context: ./node
       target: prod
     environment:
       POSTGRES_HOST: db
@@ -10,14 +10,11 @@ services:
       POSTGRES_DB: example
     ports:
       - 3000:3000
-      - 9229:9229
     depends_on:
       db:
         condition: service_healthy
     secrets:
       - db-password
-    volumes:
-      - ./src:/usr/src/app/src
   db:
     image: postgres
     restart: always

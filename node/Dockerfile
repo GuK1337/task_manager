@@ -20,7 +20,7 @@ FROM base as prod
 ENV NODE_ENV production
 COPY package.json .
 COPY package-lock.json .
-RUN npm ci --omit=dev
+RUN npm ci --include=dev
 RUN npm install typescript -g
 COPY . .
 RUN npm run build
