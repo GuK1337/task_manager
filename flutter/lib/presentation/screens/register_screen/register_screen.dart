@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:example_app/domain/bloc/auth_cubit/auth_cubit.dart';
-import 'package:example_app/presentation/router/app_router.gr.dart';
+import 'package:example_app/domain/bloc/register_cubit/register_cubit.dart';
 import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
 import 'package:example_app/utils/sr_bloc/sr_bloc_builder.dart';
@@ -10,14 +9,16 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get_it/get_it.dart';
 
-abstract class _AuthFormKeys {
+abstract class _RegisterFormKeys {
   static const login = 'login';
   static const password = 'password';
+  static const password2 = 'password2';
+  static const username = 'username';
 }
 
 @RoutePage()
-class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
-  AuthScreen({super.key, this.onComplete});
+class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
+  RegisterScreen({super.key, this.onComplete});
 
   final VoidCallback? onComplete;
 
@@ -26,6 +27,9 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: const AutoLeadingButton(),
+      ),
       body: SafeArea(
         child: FormBuilder(
           key: _formKey,
@@ -36,14 +40,14 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'ВХОД',
+                  'РЕГИСТРАЦИЯ',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(
                   height: AppInsets.padding16,
                 ),
                 FormBuilderTextField(
-                  name: _AuthFormKeys.login,
+                  name: _RegisterFormKeys.login,
                   decoration: const InputDecoration(
                     labelText: 'Логин',
                   ),
@@ -56,12 +60,9 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                   height: AppInsets.padding16,
                 ),
                 FormBuilderTextField(
-                  name: _AuthFormKeys.password,
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
+                  name: _RegisterFormKeys.username,
                   decoration: const InputDecoration(
-                    labelText: 'Пароль',
+                    labelText: 'Имя пользователя',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -71,7 +72,49 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                 const SizedBox(
                   height: AppInsets.padding16,
                 ),
-                SrBlocBuilder<AuthCubit, AuthState, AuthSr>(
+                FormBuilderTextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  name: _RegisterFormKeys.password,
+                  decoration: const InputDecoration(
+                    labelText: 'Пароль',
+                  ),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.minLength(6),
+                    FormBuilderValidators.maxLength(255),
+                  ]),
+                ),
+                const SizedBox(
+                  height: AppInsets.padding16,
+                ),
+                FormBuilderTextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  name: _RegisterFormKeys.password2,
+                  decoration: const InputDecoration(
+                    labelText: 'Повторите пароль',
+                  ),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.minLength(6),
+                    FormBuilderValidators.maxLength(255),
+                    (value) {
+                      if (value !=
+                          _formKey.currentState
+                              ?.value[_RegisterFormKeys.password]) {
+                        return 'Пароли не совпадают';
+                      }
+                      return null;
+                    }
+                  ]),
+                ),
+                const SizedBox(
+                  height: AppInsets.padding16,
+                ),
+                SrBlocBuilder<RegisterCubit, RegisterState, RegisterSr>(
                   onSR: (context, sr) => sr.when(
                     login: () => onComplete?.call(),
                     error: (error) =>
@@ -82,17 +125,18 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                       onPressed: state.maybeWhen(
                         orElse: () => () {
                           if (_formKey.currentState!.saveAndValidate()) {
-                            context.read<AuthCubit>().auth(
-                                login: _formKey
-                                    .currentState!.value[_AuthFormKeys.login],
-                                password: _formKey.currentState!
-                                    .value[_AuthFormKeys.password]);
+                            final value = _formKey.currentState!.value;
+                            context.read<RegisterCubit>().register(
+                                  login: value[_RegisterFormKeys.login],
+                                  password: value[_RegisterFormKeys.password],
+                                  username: value[_RegisterFormKeys.username],
+                                );
                           }
                         },
                         loading: () => null,
                       ),
                       child: state.maybeWhen(
-                        orElse: () => const Text('Войти'),
+                        orElse: () => const Text('Зарегистрироваться'),
                         loading: () => SizedBox(
                           width: 15.0,
                           height: 15.0,
@@ -104,21 +148,7 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                       ),
                     );
                   },
-                ),
-                const SizedBox(
-                  height: AppInsets.padding16,
-                ),
-                OutlinedButton(
-                  onPressed: () => context.router.push(
-                    RegisterRoute(
-                      onComplete: () {
-                        context.router.pop();
-                        onComplete?.call();
-                      },
-                    ),
-                  ),
-                  child: const Text('Регистрация'),
-                ),
+                )
               ],
             ),
           ),
@@ -129,7 +159,7 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<AuthCubit>(
+    return BlocProvider<RegisterCubit>(
       create: (_) => GetIt.I.get(),
       child: this,
     );

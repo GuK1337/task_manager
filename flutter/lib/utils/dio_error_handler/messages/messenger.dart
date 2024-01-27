@@ -1,3 +1,4 @@
+import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 
@@ -22,39 +23,41 @@ abstract class Messenger {
       context: context,
       duration: duration,
       builder: (context, controller) {
-        return Flash(
-          controller: controller,
+        return FlashBar(
+          dismissDirections: const [
+            FlashDismissDirection.endToStart,
+            FlashDismissDirection.startToEnd,
+          ],
           behavior: flashStyle,
           backgroundColor: colors.backgroundColor,
-          borderRadius: BorderRadius.circular(10.0),
-          margin: const EdgeInsets.all(20.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppInsets.cardBorderRadius),
+          ),
+          margin: const EdgeInsets.all(AppInsets.padding16),
           position: FlashPosition.top,
-          boxShadows: kElevationToShadow[8],
-          horizontalDismissDirection: HorizontalDismissDirection.horizontal,
-          child: FlashBar(
-            content: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (title != null) ...[
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          color: colors.foregroundColor,
-                        ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (title != null) ...[
                 Text(
-                  message,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  title,
+                  style: Theme.of(context).textTheme.headline6!.copyWith(
                         color: colors.foregroundColor,
                       ),
                 ),
+                const SizedBox(
+                  height: AppInsets.padding8,
+                ),
               ],
-            ),
+              Text(
+                message,
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: colors.foregroundColor,
+                    ),
+              ),
+            ],
           ),
+          controller: controller,
         );
       },
     );
@@ -65,21 +68,21 @@ abstract class Messenger {
       case MessageType.success:
         return MessageColors(
           foregroundColor: Colors.white,
-          backgroundColor: Colors.green.shade700,
+          backgroundColor: const Color(0xFF4CAF50),
         );
       case MessageType.error:
         return MessageColors(
           foregroundColor: Colors.white,
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: Colors.red,
         );
       case MessageType.warning:
         return MessageColors(
           foregroundColor: Colors.black,
-          backgroundColor: Colors.yellow.shade700,
+          backgroundColor: Colors.orange,
         );
       case MessageType.message:
         return MessageColors(
-          foregroundColor: Colors.white,
+          foregroundColor: Colors.black,
           backgroundColor: Colors.blue,
         );
     }

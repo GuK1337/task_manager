@@ -87,23 +87,24 @@ class _$TasksStateCopyWithImpl<$Res, $Val extends TasksState>
 }
 
 /// @nodoc
-abstract class _$$_InitCopyWith<$Res> {
-  factory _$$_InitCopyWith(_$_Init value, $Res Function(_$_Init) then) =
-      __$$_InitCopyWithImpl<$Res>;
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_Init>
-    implements _$$_InitCopyWith<$Res> {
-  __$$_InitCopyWithImpl(_$_Init _value, $Res Function(_$_Init) _then)
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Init implements _Init {
-  const _$_Init();
+class _$InitImpl implements _Init {
+  const _$InitImpl();
 
   @override
   String toString() {
@@ -111,9 +112,9 @@ class _$_Init implements _Init {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Init);
+        (other.runtimeType == runtimeType && other is _$InitImpl);
   }
 
   @override
@@ -195,28 +196,29 @@ class _$_Init implements _Init {
 }
 
 abstract class _Init implements TasksState {
-  const factory _Init() = _$_Init;
+  const factory _Init() = _$InitImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -224,9 +226,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -308,22 +310,24 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements TasksState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ReadyCopyWith<$Res> {
-  factory _$$_ReadyCopyWith(_$_Ready value, $Res Function(_$_Ready) then) =
-      __$$_ReadyCopyWithImpl<$Res>;
+abstract class _$$ReadyImplCopyWith<$Res> {
+  factory _$$ReadyImplCopyWith(
+          _$ReadyImpl value, $Res Function(_$ReadyImpl) then) =
+      __$$ReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Task> tasks});
 }
 
 /// @nodoc
-class __$$_ReadyCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_Ready>
-    implements _$$_ReadyCopyWith<$Res> {
-  __$$_ReadyCopyWithImpl(_$_Ready _value, $Res Function(_$_Ready) _then)
+class __$$ReadyImplCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$ReadyImpl>
+    implements _$$ReadyImplCopyWith<$Res> {
+  __$$ReadyImplCopyWithImpl(
+      _$ReadyImpl _value, $Res Function(_$ReadyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -331,7 +335,7 @@ class __$$_ReadyCopyWithImpl<$Res>
   $Res call({
     Object? tasks = null,
   }) {
-    return _then(_$_Ready(
+    return _then(_$ReadyImpl(
       tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -342,8 +346,8 @@ class __$$_ReadyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Ready implements _Ready {
-  const _$_Ready({required final List<Task> tasks}) : _tasks = tasks;
+class _$ReadyImpl implements _Ready {
+  const _$ReadyImpl({required final List<Task> tasks}) : _tasks = tasks;
 
   final List<Task> _tasks;
   @override
@@ -359,10 +363,10 @@ class _$_Ready implements _Ready {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Ready &&
+            other is _$ReadyImpl &&
             const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
 
@@ -373,8 +377,8 @@ class _$_Ready implements _Ready {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReadyCopyWith<_$_Ready> get copyWith =>
-      __$$_ReadyCopyWithImpl<_$_Ready>(this, _$identity);
+  _$$ReadyImplCopyWith<_$ReadyImpl> get copyWith =>
+      __$$ReadyImplCopyWithImpl<_$ReadyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -452,32 +456,34 @@ class _$_Ready implements _Ready {
 }
 
 abstract class _Ready implements TasksState {
-  const factory _Ready({required final List<Task> tasks}) = _$_Ready;
+  const factory _Ready({required final List<Task> tasks}) = _$ReadyImpl;
 
   List<Task> get tasks;
   @JsonKey(ignore: true)
-  _$$_ReadyCopyWith<_$_Ready> get copyWith =>
+  _$$ReadyImplCopyWith<_$ReadyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$TasksStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$TasksStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -485,9 +491,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -569,5 +575,5 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements TasksState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }

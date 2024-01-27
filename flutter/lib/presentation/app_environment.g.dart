@@ -6,12 +6,13 @@ part of 'app_environment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppEnvironment _$$_AppEnvironmentFromJson(Map<String, dynamic> json) =>
-    _$_AppEnvironment(
+_$AppEnvironmentImpl _$$AppEnvironmentImplFromJson(Map<String, dynamic> json) =>
+    _$AppEnvironmentImpl(
       apiEndpoint: json['apiEndpoint'] as String,
     );
 
-Map<String, dynamic> _$$_AppEnvironmentToJson(_$_AppEnvironment instance) =>
+Map<String, dynamic> _$$AppEnvironmentImplToJson(
+        _$AppEnvironmentImpl instance) =>
     <String, dynamic>{
       'apiEndpoint': instance.apiEndpoint,
     };

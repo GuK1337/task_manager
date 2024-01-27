@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 @RoutePage()
-class InstructedTasksScreen extends StatelessWidget with AutoRouteWrapper {
+class InstructedTasksScreen extends StatelessWidget
+    implements AutoRouteWrapper {
   const InstructedTasksScreen({super.key});
 
   @override

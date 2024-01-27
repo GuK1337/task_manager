@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 @RoutePage()
-class ArchiveTasksScreen extends StatelessWidget with AutoRouteWrapper {
+class ArchiveTasksScreen extends StatelessWidget implements AutoRouteWrapper {
   const ArchiveTasksScreen({super.key});
 
   @override

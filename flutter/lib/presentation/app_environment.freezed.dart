@@ -62,22 +62,22 @@ class _$AppEnvironmentCopyWithImpl<$Res, $Val extends AppEnvironment>
 }
 
 /// @nodoc
-abstract class _$$_AppEnvironmentCopyWith<$Res>
+abstract class _$$AppEnvironmentImplCopyWith<$Res>
     implements $AppEnvironmentCopyWith<$Res> {
-  factory _$$_AppEnvironmentCopyWith(
-          _$_AppEnvironment value, $Res Function(_$_AppEnvironment) then) =
-      __$$_AppEnvironmentCopyWithImpl<$Res>;
+  factory _$$AppEnvironmentImplCopyWith(_$AppEnvironmentImpl value,
+          $Res Function(_$AppEnvironmentImpl) then) =
+      __$$AppEnvironmentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String apiEndpoint});
 }
 
 /// @nodoc
-class __$$_AppEnvironmentCopyWithImpl<$Res>
-    extends _$AppEnvironmentCopyWithImpl<$Res, _$_AppEnvironment>
-    implements _$$_AppEnvironmentCopyWith<$Res> {
-  __$$_AppEnvironmentCopyWithImpl(
-      _$_AppEnvironment _value, $Res Function(_$_AppEnvironment) _then)
+class __$$AppEnvironmentImplCopyWithImpl<$Res>
+    extends _$AppEnvironmentCopyWithImpl<$Res, _$AppEnvironmentImpl>
+    implements _$$AppEnvironmentImplCopyWith<$Res> {
+  __$$AppEnvironmentImplCopyWithImpl(
+      _$AppEnvironmentImpl _value, $Res Function(_$AppEnvironmentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_AppEnvironmentCopyWithImpl<$Res>
   $Res call({
     Object? apiEndpoint = null,
   }) {
-    return _then(_$_AppEnvironment(
+    return _then(_$AppEnvironmentImpl(
       apiEndpoint: null == apiEndpoint
           ? _value.apiEndpoint
           : apiEndpoint // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_AppEnvironmentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppEnvironment implements _AppEnvironment {
-  const _$_AppEnvironment({required this.apiEndpoint});
+class _$AppEnvironmentImpl implements _AppEnvironment {
+  const _$AppEnvironmentImpl({required this.apiEndpoint});
 
-  factory _$_AppEnvironment.fromJson(Map<String, dynamic> json) =>
-      _$$_AppEnvironmentFromJson(json);
+  factory _$AppEnvironmentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppEnvironmentImplFromJson(json);
 
   @override
   final String apiEndpoint;
@@ -111,10 +111,10 @@ class _$_AppEnvironment implements _AppEnvironment {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppEnvironment &&
+            other is _$AppEnvironmentImpl &&
             (identical(other.apiEndpoint, apiEndpoint) ||
                 other.apiEndpoint == apiEndpoint));
   }
@@ -126,12 +126,13 @@ class _$_AppEnvironment implements _AppEnvironment {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppEnvironmentCopyWith<_$_AppEnvironment> get copyWith =>
-      __$$_AppEnvironmentCopyWithImpl<_$_AppEnvironment>(this, _$identity);
+  _$$AppEnvironmentImplCopyWith<_$AppEnvironmentImpl> get copyWith =>
+      __$$AppEnvironmentImplCopyWithImpl<_$AppEnvironmentImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppEnvironmentToJson(
+    return _$$AppEnvironmentImplToJson(
       this,
     );
   }
@@ -139,15 +140,15 @@ class _$_AppEnvironment implements _AppEnvironment {
 
 abstract class _AppEnvironment implements AppEnvironment {
   const factory _AppEnvironment({required final String apiEndpoint}) =
-      _$_AppEnvironment;
+      _$AppEnvironmentImpl;
 
   factory _AppEnvironment.fromJson(Map<String, dynamic> json) =
-      _$_AppEnvironment.fromJson;
+      _$AppEnvironmentImpl.fromJson;
 
   @override
   String get apiEndpoint;
   @override
   @JsonKey(ignore: true)
-  _$$_AppEnvironmentCopyWith<_$_AppEnvironment> get copyWith =>
+  _$$AppEnvironmentImplCopyWith<_$AppEnvironmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

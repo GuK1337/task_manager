@@ -6,13 +6,14 @@ part of 'new_task.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_NewTask _$$_NewTaskFromJson(Map<String, dynamic> json) => _$_NewTask(
+_$NewTaskImpl _$$NewTaskImplFromJson(Map<String, dynamic> json) =>
+    _$NewTaskImpl(
       title: json['title'] as String,
       description: json['description'] as String?,
       imagePath: json['imagePath'] as String,
     );
 
-Map<String, dynamic> _$$_NewTaskToJson(_$_NewTask instance) =>
+Map<String, dynamic> _$$NewTaskImplToJson(_$NewTaskImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,

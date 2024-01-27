@@ -4,35 +4,36 @@ import 'package:example_app/utils/sr_bloc/sr_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'auth_state.dart';
-part 'auth_cubit.freezed.dart';
+part 'register_state.dart';
+part 'register_cubit.freezed.dart';
 
 @injectable
-class AuthCubit extends SrCubit<AuthState, AuthSr> {
-  AuthCubit({
+class RegisterCubit extends SrCubit<RegisterState, RegisterSr> {
+  RegisterCubit({
     required this.authRepository,
-  }) : super(const AuthState.ready());
+  }) : super(const RegisterState.ready());
 
   @protected
   final AuthRepository authRepository;
 
-  Future<void> auth({
+  Future<void> register({
     required String login,
     required String password,
+    required String username,
   }) async {
     if (state is _Loading) {
       return;
     }
-    emit(const AuthState.loading());
-    final response =
-        await authRepository.auth(login: login, password: password);
+    emit(const RegisterState.loading());
+    final response = await authRepository.register(
+        login: login, password: password, username: username);
     if (response.hasError) {
       addError(response.error);
-      emit(const AuthState.ready());
-      addSr(AuthSr.error(ErrorMessages.getMessage(response.error)));
+      emit(const RegisterState.ready());
+      addSr(RegisterSr.error(ErrorMessages.getMessage(response.error)));
       return;
     }
-    emit(const AuthState.ready());
-    addSr(const AuthSr.login());
+    emit(const RegisterState.ready());
+    addSr(const RegisterSr.login());
   }
 }

@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/task/task.dart';
-import 'package:example_app/domain/bloc/task_cubit/task_cubit.dart';
-import 'package:example_app/presentation/app/theme/models/app_insets.dart';
+import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/router/app_router.gr.dart';
+import 'package:example_app/presentation/theme/models/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class TaskItem extends StatelessWidget {
   const TaskItem({
@@ -21,10 +21,24 @@ class TaskItem extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         child: Padding(
-          padding: const EdgeInsets.all(AppInsets.padding),
-          child: Text(
-            task.title,
-            style: Theme.of(context).textTheme.labelLarge,
+          padding: const EdgeInsets.all(AppInsets.padding16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                task.title,
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              const SizedBox(
+                height: AppInsets.padding16,
+              ),
+              Text(
+                DateFormat('dd.MM.yyyy, HH:mm').format(task.createdAt),
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: Theme.of(context).extension<CustomThemeExtension>()!.labelColor,
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:example_app/data/const/injectable_names.dart';
+import 'package:example_app/data/models/auth_response/auth_response.dart';
 import 'package:example_app/data/models/new_task/new_task.dart';
+import 'package:example_app/data/models/register_response/register_response.dart';
 import 'package:example_app/data/models/task/task.dart';
 import 'package:example_app/data/models/user/user.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
@@ -14,7 +16,8 @@ import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart';
 
 abstract class ApiService {
-  Future<DefaultResponse<User>> auth(String login);
+  Future<DefaultResponse<User>> auth(AuthResponse data);
+  Future<DefaultResponse<User>> register(RegisterResponse data);
   Future<DefaultResponse<User>> checkUser(User user);
 
   Future<DefaultResponse<int>> createTask({
@@ -50,14 +53,12 @@ class ApiServiceImpl extends ApiService {
   final DioErrorHandler<DefaultApiError> errorHandler;
 
   @override
-  Future<DefaultResponse<User>> auth(String login) async {
+  Future<DefaultResponse<User>> auth(AuthResponse data) async {
     try {
       final response = await _request(
         route: 'api/users/auth',
         requestType: RequestType.post,
-        data: {
-          'login': login,
-        },
+        data: data.toJson(),
       );
       if (response.hasError) {
         return ApiResponse.error(response.error);
@@ -289,6 +290,23 @@ class ApiServiceImpl extends ApiService {
         return ApiResponse.error(response.error);
       }
       return ApiResponse.success(response.result.data['result']);
+    } catch (e) {
+      return ApiResponse.error(CommonResponseError.undefinedError(e));
+    }
+  }
+
+  @override
+  Future<DefaultResponse<User>> register(RegisterResponse data) async {
+    try {
+      final response = await _request(
+        route: 'api/users/register',
+        requestType: RequestType.post,
+        data: data.toJson(),
+      );
+      if (response.hasError) {
+        return ApiResponse.error(response.error);
+      }
+      return ApiResponse.success(User.fromJson(response.result));
     } catch (e) {
       return ApiResponse.error(CommonResponseError.undefinedError(e));
     }

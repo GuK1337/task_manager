@@ -77,21 +77,23 @@ class _$ApiResponseCopyWithImpl<Error, Result, $Res,
 }
 
 /// @nodoc
-abstract class _$$_ApiResponseErrorCopyWith<Error, Result, $Res> {
-  factory _$$_ApiResponseErrorCopyWith(_$_ApiResponseError<Error, Result> value,
-          $Res Function(_$_ApiResponseError<Error, Result>) then) =
-      __$$_ApiResponseErrorCopyWithImpl<Error, Result, $Res>;
+abstract class _$$ApiResponseErrorImplCopyWith<Error, Result, $Res> {
+  factory _$$ApiResponseErrorImplCopyWith(
+          _$ApiResponseErrorImpl<Error, Result> value,
+          $Res Function(_$ApiResponseErrorImpl<Error, Result>) then) =
+      __$$ApiResponseErrorImplCopyWithImpl<Error, Result, $Res>;
   @useResult
   $Res call({Error error});
 }
 
 /// @nodoc
-class __$$_ApiResponseErrorCopyWithImpl<Error, Result, $Res>
+class __$$ApiResponseErrorImplCopyWithImpl<Error, Result, $Res>
     extends _$ApiResponseCopyWithImpl<Error, Result, $Res,
-        _$_ApiResponseError<Error, Result>>
-    implements _$$_ApiResponseErrorCopyWith<Error, Result, $Res> {
-  __$$_ApiResponseErrorCopyWithImpl(_$_ApiResponseError<Error, Result> _value,
-      $Res Function(_$_ApiResponseError<Error, Result>) _then)
+        _$ApiResponseErrorImpl<Error, Result>>
+    implements _$$ApiResponseErrorImplCopyWith<Error, Result, $Res> {
+  __$$ApiResponseErrorImplCopyWithImpl(
+      _$ApiResponseErrorImpl<Error, Result> _value,
+      $Res Function(_$ApiResponseErrorImpl<Error, Result>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +101,7 @@ class __$$_ApiResponseErrorCopyWithImpl<Error, Result, $Res>
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$_ApiResponseError<Error, Result>(
+    return _then(_$ApiResponseErrorImpl<Error, Result>(
       freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -110,9 +112,9 @@ class __$$_ApiResponseErrorCopyWithImpl<Error, Result, $Res>
 
 /// @nodoc
 
-class _$_ApiResponseError<Error, Result>
+class _$ApiResponseErrorImpl<Error, Result>
     extends _ApiResponseError<Error, Result> with DiagnosticableTreeMixin {
-  const _$_ApiResponseError(this.error) : super._();
+  const _$ApiResponseErrorImpl(this.error) : super._();
 
   @override
   final Error error;
@@ -131,10 +133,10 @@ class _$_ApiResponseError<Error, Result>
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiResponseError<Error, Result> &&
+            other is _$ApiResponseErrorImpl<Error, Result> &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -145,10 +147,10 @@ class _$_ApiResponseError<Error, Result>
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiResponseErrorCopyWith<Error, Result,
-          _$_ApiResponseError<Error, Result>>
-      get copyWith => __$$_ApiResponseErrorCopyWithImpl<Error, Result,
-          _$_ApiResponseError<Error, Result>>(this, _$identity);
+  _$$ApiResponseErrorImplCopyWith<Error, Result,
+          _$ApiResponseErrorImpl<Error, Result>>
+      get copyWith => __$$ApiResponseErrorImplCopyWithImpl<Error, Result,
+          _$ApiResponseErrorImpl<Error, Result>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -216,34 +218,34 @@ class _$_ApiResponseError<Error, Result>
 abstract class _ApiResponseError<Error, Result>
     extends ApiResponse<Error, Result> {
   const factory _ApiResponseError(final Error error) =
-      _$_ApiResponseError<Error, Result>;
+      _$ApiResponseErrorImpl<Error, Result>;
   const _ApiResponseError._() : super._();
 
   Error get error;
   @JsonKey(ignore: true)
-  _$$_ApiResponseErrorCopyWith<Error, Result,
-          _$_ApiResponseError<Error, Result>>
+  _$$ApiResponseErrorImplCopyWith<Error, Result,
+          _$ApiResponseErrorImpl<Error, Result>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ApiResponseSuccessCopyWith<Error, Result, $Res> {
-  factory _$$_ApiResponseSuccessCopyWith(
-          _$_ApiResponseSuccess<Error, Result> value,
-          $Res Function(_$_ApiResponseSuccess<Error, Result>) then) =
-      __$$_ApiResponseSuccessCopyWithImpl<Error, Result, $Res>;
+abstract class _$$ApiResponseSuccessImplCopyWith<Error, Result, $Res> {
+  factory _$$ApiResponseSuccessImplCopyWith(
+          _$ApiResponseSuccessImpl<Error, Result> value,
+          $Res Function(_$ApiResponseSuccessImpl<Error, Result>) then) =
+      __$$ApiResponseSuccessImplCopyWithImpl<Error, Result, $Res>;
   @useResult
   $Res call({Result result});
 }
 
 /// @nodoc
-class __$$_ApiResponseSuccessCopyWithImpl<Error, Result, $Res>
+class __$$ApiResponseSuccessImplCopyWithImpl<Error, Result, $Res>
     extends _$ApiResponseCopyWithImpl<Error, Result, $Res,
-        _$_ApiResponseSuccess<Error, Result>>
-    implements _$$_ApiResponseSuccessCopyWith<Error, Result, $Res> {
-  __$$_ApiResponseSuccessCopyWithImpl(
-      _$_ApiResponseSuccess<Error, Result> _value,
-      $Res Function(_$_ApiResponseSuccess<Error, Result>) _then)
+        _$ApiResponseSuccessImpl<Error, Result>>
+    implements _$$ApiResponseSuccessImplCopyWith<Error, Result, $Res> {
+  __$$ApiResponseSuccessImplCopyWithImpl(
+      _$ApiResponseSuccessImpl<Error, Result> _value,
+      $Res Function(_$ApiResponseSuccessImpl<Error, Result>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -251,7 +253,7 @@ class __$$_ApiResponseSuccessCopyWithImpl<Error, Result, $Res>
   $Res call({
     Object? result = freezed,
   }) {
-    return _then(_$_ApiResponseSuccess<Error, Result>(
+    return _then(_$ApiResponseSuccessImpl<Error, Result>(
       freezed == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -262,9 +264,9 @@ class __$$_ApiResponseSuccessCopyWithImpl<Error, Result, $Res>
 
 /// @nodoc
 
-class _$_ApiResponseSuccess<Error, Result>
+class _$ApiResponseSuccessImpl<Error, Result>
     extends _ApiResponseSuccess<Error, Result> with DiagnosticableTreeMixin {
-  const _$_ApiResponseSuccess(this.result) : super._();
+  const _$ApiResponseSuccessImpl(this.result) : super._();
 
   @override
   final Result result;
@@ -283,10 +285,10 @@ class _$_ApiResponseSuccess<Error, Result>
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiResponseSuccess<Error, Result> &&
+            other is _$ApiResponseSuccessImpl<Error, Result> &&
             const DeepCollectionEquality().equals(other.result, result));
   }
 
@@ -297,10 +299,10 @@ class _$_ApiResponseSuccess<Error, Result>
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiResponseSuccessCopyWith<Error, Result,
-          _$_ApiResponseSuccess<Error, Result>>
-      get copyWith => __$$_ApiResponseSuccessCopyWithImpl<Error, Result,
-          _$_ApiResponseSuccess<Error, Result>>(this, _$identity);
+  _$$ApiResponseSuccessImplCopyWith<Error, Result,
+          _$ApiResponseSuccessImpl<Error, Result>>
+      get copyWith => __$$ApiResponseSuccessImplCopyWithImpl<Error, Result,
+          _$ApiResponseSuccessImpl<Error, Result>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -368,12 +370,12 @@ class _$_ApiResponseSuccess<Error, Result>
 abstract class _ApiResponseSuccess<Error, Result>
     extends ApiResponse<Error, Result> {
   const factory _ApiResponseSuccess(final Result result) =
-      _$_ApiResponseSuccess<Error, Result>;
+      _$ApiResponseSuccessImpl<Error, Result>;
   const _ApiResponseSuccess._() : super._();
 
   Result get result;
   @JsonKey(ignore: true)
-  _$$_ApiResponseSuccessCopyWith<Error, Result,
-          _$_ApiResponseSuccess<Error, Result>>
+  _$$ApiResponseSuccessImplCopyWith<Error, Result,
+          _$ApiResponseSuccessImpl<Error, Result>>
       get copyWith => throw _privateConstructorUsedError;
 }

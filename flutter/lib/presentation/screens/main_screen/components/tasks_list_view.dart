@@ -1,6 +1,6 @@
 import 'package:example_app/data/models/task/task.dart';
 import 'package:example_app/domain/bloc/task_cubit/task_cubit.dart';
-import 'package:example_app/presentation/app/theme/models/app_insets.dart';
+import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/screens/main_screen/components/task_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,12 +40,12 @@ class TasksListContent extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: () => context.read<TasksCubit>().fetch(),
       child: ListView.separated(
-        padding: const EdgeInsets.all(AppInsets.padding),
+        padding: const EdgeInsets.all(AppInsets.padding16),
         itemBuilder: (context, index) => TaskItem(
           task: tasks[index],
         ),
         separatorBuilder: (_, __) => const SizedBox(
-          height: AppInsets.padding,
+          height: AppInsets.padding16,
         ),
         itemCount: tasks.length,
       ),
@@ -76,13 +76,13 @@ class ErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(AppInsets.padding),
+        padding: const EdgeInsets.all(AppInsets.padding16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text('Что-то пошло не так :('),
             const SizedBox(
-              height: AppInsets.padding,
+              height: AppInsets.padding16,
             ),
             TextButton(
               onPressed: onReload,

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 @RoutePage()
-class SplashScreen extends StatelessWidget with AutoRouteWrapper {
+class SplashScreen extends StatelessWidget implements AutoRouteWrapper {
   const SplashScreen({
     Key? key,
     this.onLoad,

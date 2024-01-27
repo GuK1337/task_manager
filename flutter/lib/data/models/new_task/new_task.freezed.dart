@@ -72,20 +72,21 @@ class _$NewTaskCopyWithImpl<$Res, $Val extends NewTask>
 }
 
 /// @nodoc
-abstract class _$$_NewTaskCopyWith<$Res> implements $NewTaskCopyWith<$Res> {
-  factory _$$_NewTaskCopyWith(
-          _$_NewTask value, $Res Function(_$_NewTask) then) =
-      __$$_NewTaskCopyWithImpl<$Res>;
+abstract class _$$NewTaskImplCopyWith<$Res> implements $NewTaskCopyWith<$Res> {
+  factory _$$NewTaskImplCopyWith(
+          _$NewTaskImpl value, $Res Function(_$NewTaskImpl) then) =
+      __$$NewTaskImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String title, String? description, String imagePath});
 }
 
 /// @nodoc
-class __$$_NewTaskCopyWithImpl<$Res>
-    extends _$NewTaskCopyWithImpl<$Res, _$_NewTask>
-    implements _$$_NewTaskCopyWith<$Res> {
-  __$$_NewTaskCopyWithImpl(_$_NewTask _value, $Res Function(_$_NewTask) _then)
+class __$$NewTaskImplCopyWithImpl<$Res>
+    extends _$NewTaskCopyWithImpl<$Res, _$NewTaskImpl>
+    implements _$$NewTaskImplCopyWith<$Res> {
+  __$$NewTaskImplCopyWithImpl(
+      _$NewTaskImpl _value, $Res Function(_$NewTaskImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +96,7 @@ class __$$_NewTaskCopyWithImpl<$Res>
     Object? description = freezed,
     Object? imagePath = null,
   }) {
-    return _then(_$_NewTask(
+    return _then(_$NewTaskImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -114,12 +115,12 @@ class __$$_NewTaskCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NewTask with DiagnosticableTreeMixin implements _NewTask {
-  const _$_NewTask(
+class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
+  const _$NewTaskImpl(
       {required this.title, this.description, required this.imagePath});
 
-  factory _$_NewTask.fromJson(Map<String, dynamic> json) =>
-      _$$_NewTaskFromJson(json);
+  factory _$NewTaskImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewTaskImplFromJson(json);
 
   @override
   final String title;
@@ -144,10 +145,10 @@ class _$_NewTask with DiagnosticableTreeMixin implements _NewTask {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewTask &&
+            other is _$NewTaskImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -162,12 +163,12 @@ class _$_NewTask with DiagnosticableTreeMixin implements _NewTask {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewTaskCopyWith<_$_NewTask> get copyWith =>
-      __$$_NewTaskCopyWithImpl<_$_NewTask>(this, _$identity);
+  _$$NewTaskImplCopyWith<_$NewTaskImpl> get copyWith =>
+      __$$NewTaskImplCopyWithImpl<_$NewTaskImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NewTaskToJson(
+    return _$$NewTaskImplToJson(
       this,
     );
   }
@@ -177,9 +178,9 @@ abstract class _NewTask implements NewTask {
   const factory _NewTask(
       {required final String title,
       final String? description,
-      required final String imagePath}) = _$_NewTask;
+      required final String imagePath}) = _$NewTaskImpl;
 
-  factory _NewTask.fromJson(Map<String, dynamic> json) = _$_NewTask.fromJson;
+  factory _NewTask.fromJson(Map<String, dynamic> json) = _$NewTaskImpl.fromJson;
 
   @override
   String get title;
@@ -189,6 +190,6 @@ abstract class _NewTask implements NewTask {
   String get imagePath;
   @override
   @JsonKey(ignore: true)
-  _$$_NewTaskCopyWith<_$_NewTask> get copyWith =>
+  _$$NewTaskImplCopyWith<_$NewTaskImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,16 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/new_task/new_task.dart';
 import 'package:example_app/domain/bloc/create_new_task_cubit/create_new_task_cubit.dart';
-import 'package:example_app/presentation/app/theme/models/app_insets.dart';
+import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
-import 'package:example_app/utils/dio_error_handler/messages/messenger.dart';
 import 'package:example_app/utils/sr_bloc/sr_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,7 +19,7 @@ abstract class _TaskFormKeys {
 }
 
 @RoutePage()
-class TaskFormScreen extends StatelessWidget with AutoRouteWrapper {
+class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
   TaskFormScreen({super.key});
 
   final _formKey = GlobalKey<FormBuilderState>();
@@ -39,7 +37,7 @@ class TaskFormScreen extends StatelessWidget with AutoRouteWrapper {
             children: [
               Expanded(
                   child: ListView(
-                padding: const EdgeInsets.all(AppInsets.padding),
+                padding: const EdgeInsets.all(AppInsets.padding16),
                 children: [
                   FormBuilderTextField(
                     name: _TaskFormKeys._title,
@@ -54,7 +52,7 @@ class TaskFormScreen extends StatelessWidget with AutoRouteWrapper {
                     ),
                   ),
                   const SizedBox(
-                    height: AppInsets.padding,
+                    height: AppInsets.padding16,
                   ),
                   FormBuilderTextField(
                     name: _TaskFormKeys._description,
@@ -66,7 +64,7 @@ class TaskFormScreen extends StatelessWidget with AutoRouteWrapper {
                     validator: FormBuilderValidators.required(),
                   ),
                   const SizedBox(
-                    height: AppInsets.padding,
+                    height: AppInsets.padding16,
                   ),
                   FormBuilderImagePicker(
                     name: _TaskFormKeys._image,
@@ -85,7 +83,7 @@ class TaskFormScreen extends StatelessWidget with AutoRouteWrapper {
                 height: 1.0,
               ),
               Padding(
-                padding: const EdgeInsets.all(AppInsets.padding),
+                padding: const EdgeInsets.all(AppInsets.padding16),
                 child: SrBlocBuilder<CreateNewTaskCubit, CreateNewTaskState,
                     CreateNewTaskSr>(
                   onSR: (context, sr) => sr.when(

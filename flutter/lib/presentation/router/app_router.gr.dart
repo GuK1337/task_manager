@@ -8,8 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i10;
-import 'package:example_app/data/models/task/task.dart' as _i12;
+import 'package:auto_route/auto_route.dart' as _i11;
+import 'package:example_app/data/models/task/task.dart' as _i13;
 import 'package:example_app/presentation/screens/auth_screen.dart' as _i2;
 import 'package:example_app/presentation/screens/main_screen/main_screen.dart'
     as _i5;
@@ -21,28 +21,30 @@ import 'package:example_app/presentation/screens/main_screen/screens/instructed_
     as _i4;
 import 'package:example_app/presentation/screens/main_screen/screens/new_tasks_screen.dart'
     as _i6;
-import 'package:example_app/presentation/screens/splash_screen.dart' as _i7;
-import 'package:example_app/presentation/screens/task_form_screen.dart' as _i8;
-import 'package:example_app/presentation/screens/task_info_screen.dart' as _i9;
-import 'package:flutter/material.dart' as _i11;
+import 'package:example_app/presentation/screens/register_screen/register_screen.dart'
+    as _i7;
+import 'package:example_app/presentation/screens/splash_screen.dart' as _i8;
+import 'package:example_app/presentation/screens/task_form_screen.dart' as _i9;
+import 'package:example_app/presentation/screens/task_info_screen.dart' as _i10;
+import 'package:flutter/material.dart' as _i12;
 
-abstract class $AppRouter extends _i10.RootStackRouter {
+abstract class $AppRouter extends _i11.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i10.PageFactory> pagesMap = {
+  final Map<String, _i11.PageFactory> pagesMap = {
     ArchiveTasksRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(child: const _i1.ArchiveTasksScreen()),
+        child: _i11.WrappedRoute(child: const _i1.ArchiveTasksScreen()),
       );
     },
     AuthRoute.name: (routeData) {
       final args =
           routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(
+        child: _i11.WrappedRoute(
             child: _i2.AuthScreen(
           key: args.key,
           onComplete: args.onComplete,
@@ -50,36 +52,48 @@ abstract class $AppRouter extends _i10.RootStackRouter {
       );
     },
     InProgressTasksRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(child: const _i3.InProgressTasksScreen()),
+        child: _i11.WrappedRoute(child: const _i3.InProgressTasksScreen()),
       );
     },
     InstructedTasksRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(child: const _i4.InstructedTasksScreen()),
+        child: _i11.WrappedRoute(child: const _i4.InstructedTasksScreen()),
       );
     },
     MainRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.MainScreen(),
       );
     },
     NewTasksRoute.name: (routeData) {
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(child: const _i6.NewTasksScreen()),
+        child: _i11.WrappedRoute(child: const _i6.NewTasksScreen()),
+      );
+    },
+    RegisterRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
+      return _i11.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i11.WrappedRoute(
+            child: _i7.RegisterScreen(
+          key: args.key,
+          onComplete: args.onComplete,
+        )),
       );
     },
     SplashRoute.name: (routeData) {
       final args = routeData.argsAs<SplashRouteArgs>(
           orElse: () => const SplashRouteArgs());
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(
-            child: _i7.SplashScreen(
+        child: _i11.WrappedRoute(
+            child: _i8.SplashScreen(
           key: args.key,
           onLoad: args.onLoad,
         )),
@@ -88,17 +102,17 @@ abstract class $AppRouter extends _i10.RootStackRouter {
     TaskFormRoute.name: (routeData) {
       final args = routeData.argsAs<TaskFormRouteArgs>(
           orElse: () => const TaskFormRouteArgs());
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(child: _i8.TaskFormScreen(key: args.key)),
+        child: _i11.WrappedRoute(child: _i9.TaskFormScreen(key: args.key)),
       );
     },
     TaskInfoRoute.name: (routeData) {
       final args = routeData.argsAs<TaskInfoRouteArgs>();
-      return _i10.AutoRoutePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.WrappedRoute(
-            child: _i9.TaskInfoScreen(
+        child: _i11.WrappedRoute(
+            child: _i10.TaskInfoScreen(
           key: args.key,
           task: args.task,
         )),
@@ -109,8 +123,8 @@ abstract class $AppRouter extends _i10.RootStackRouter {
 
 /// generated route for
 /// [_i1.ArchiveTasksScreen]
-class ArchiveTasksRoute extends _i10.PageRouteInfo<void> {
-  const ArchiveTasksRoute({List<_i10.PageRouteInfo>? children})
+class ArchiveTasksRoute extends _i11.PageRouteInfo<void> {
+  const ArchiveTasksRoute({List<_i11.PageRouteInfo>? children})
       : super(
           ArchiveTasksRoute.name,
           initialChildren: children,
@@ -118,16 +132,16 @@ class ArchiveTasksRoute extends _i10.PageRouteInfo<void> {
 
   static const String name = 'ArchiveTasksRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.AuthScreen]
-class AuthRoute extends _i10.PageRouteInfo<AuthRouteArgs> {
+class AuthRoute extends _i11.PageRouteInfo<AuthRouteArgs> {
   AuthRoute({
-    _i11.Key? key,
+    _i12.Key? key,
     void Function()? onComplete,
-    List<_i10.PageRouteInfo>? children,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           AuthRoute.name,
           args: AuthRouteArgs(
@@ -139,8 +153,8 @@ class AuthRoute extends _i10.PageRouteInfo<AuthRouteArgs> {
 
   static const String name = 'AuthRoute';
 
-  static const _i10.PageInfo<AuthRouteArgs> page =
-      _i10.PageInfo<AuthRouteArgs>(name);
+  static const _i11.PageInfo<AuthRouteArgs> page =
+      _i11.PageInfo<AuthRouteArgs>(name);
 }
 
 class AuthRouteArgs {
@@ -149,7 +163,7 @@ class AuthRouteArgs {
     this.onComplete,
   });
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   final void Function()? onComplete;
 
@@ -161,8 +175,8 @@ class AuthRouteArgs {
 
 /// generated route for
 /// [_i3.InProgressTasksScreen]
-class InProgressTasksRoute extends _i10.PageRouteInfo<void> {
-  const InProgressTasksRoute({List<_i10.PageRouteInfo>? children})
+class InProgressTasksRoute extends _i11.PageRouteInfo<void> {
+  const InProgressTasksRoute({List<_i11.PageRouteInfo>? children})
       : super(
           InProgressTasksRoute.name,
           initialChildren: children,
@@ -170,13 +184,13 @@ class InProgressTasksRoute extends _i10.PageRouteInfo<void> {
 
   static const String name = 'InProgressTasksRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.InstructedTasksScreen]
-class InstructedTasksRoute extends _i10.PageRouteInfo<void> {
-  const InstructedTasksRoute({List<_i10.PageRouteInfo>? children})
+class InstructedTasksRoute extends _i11.PageRouteInfo<void> {
+  const InstructedTasksRoute({List<_i11.PageRouteInfo>? children})
       : super(
           InstructedTasksRoute.name,
           initialChildren: children,
@@ -184,13 +198,13 @@ class InstructedTasksRoute extends _i10.PageRouteInfo<void> {
 
   static const String name = 'InstructedTasksRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.MainScreen]
-class MainRoute extends _i10.PageRouteInfo<void> {
-  const MainRoute({List<_i10.PageRouteInfo>? children})
+class MainRoute extends _i11.PageRouteInfo<void> {
+  const MainRoute({List<_i11.PageRouteInfo>? children})
       : super(
           MainRoute.name,
           initialChildren: children,
@@ -198,13 +212,13 @@ class MainRoute extends _i10.PageRouteInfo<void> {
 
   static const String name = 'MainRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.NewTasksScreen]
-class NewTasksRoute extends _i10.PageRouteInfo<void> {
-  const NewTasksRoute({List<_i10.PageRouteInfo>? children})
+class NewTasksRoute extends _i11.PageRouteInfo<void> {
+  const NewTasksRoute({List<_i11.PageRouteInfo>? children})
       : super(
           NewTasksRoute.name,
           initialChildren: children,
@@ -212,16 +226,54 @@ class NewTasksRoute extends _i10.PageRouteInfo<void> {
 
   static const String name = 'NewTasksRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i7.SplashScreen]
-class SplashRoute extends _i10.PageRouteInfo<SplashRouteArgs> {
+/// [_i7.RegisterScreen]
+class RegisterRoute extends _i11.PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({
+    _i12.Key? key,
+    void Function()? onComplete,
+    List<_i11.PageRouteInfo>? children,
+  }) : super(
+          RegisterRoute.name,
+          args: RegisterRouteArgs(
+            key: key,
+            onComplete: onComplete,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterRoute';
+
+  static const _i11.PageInfo<RegisterRouteArgs> page =
+      _i11.PageInfo<RegisterRouteArgs>(name);
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({
+    this.key,
+    this.onComplete,
+  });
+
+  final _i12.Key? key;
+
+  final void Function()? onComplete;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{key: $key, onComplete: $onComplete}';
+  }
+}
+
+/// generated route for
+/// [_i8.SplashScreen]
+class SplashRoute extends _i11.PageRouteInfo<SplashRouteArgs> {
   SplashRoute({
-    _i11.Key? key,
+    _i12.Key? key,
     void Function()? onLoad,
-    List<_i10.PageRouteInfo>? children,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           SplashRoute.name,
           args: SplashRouteArgs(
@@ -233,8 +285,8 @@ class SplashRoute extends _i10.PageRouteInfo<SplashRouteArgs> {
 
   static const String name = 'SplashRoute';
 
-  static const _i10.PageInfo<SplashRouteArgs> page =
-      _i10.PageInfo<SplashRouteArgs>(name);
+  static const _i11.PageInfo<SplashRouteArgs> page =
+      _i11.PageInfo<SplashRouteArgs>(name);
 }
 
 class SplashRouteArgs {
@@ -243,7 +295,7 @@ class SplashRouteArgs {
     this.onLoad,
   });
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   final void Function()? onLoad;
 
@@ -254,11 +306,11 @@ class SplashRouteArgs {
 }
 
 /// generated route for
-/// [_i8.TaskFormScreen]
-class TaskFormRoute extends _i10.PageRouteInfo<TaskFormRouteArgs> {
+/// [_i9.TaskFormScreen]
+class TaskFormRoute extends _i11.PageRouteInfo<TaskFormRouteArgs> {
   TaskFormRoute({
-    _i11.Key? key,
-    List<_i10.PageRouteInfo>? children,
+    _i12.Key? key,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           TaskFormRoute.name,
           args: TaskFormRouteArgs(key: key),
@@ -267,14 +319,14 @@ class TaskFormRoute extends _i10.PageRouteInfo<TaskFormRouteArgs> {
 
   static const String name = 'TaskFormRoute';
 
-  static const _i10.PageInfo<TaskFormRouteArgs> page =
-      _i10.PageInfo<TaskFormRouteArgs>(name);
+  static const _i11.PageInfo<TaskFormRouteArgs> page =
+      _i11.PageInfo<TaskFormRouteArgs>(name);
 }
 
 class TaskFormRouteArgs {
   const TaskFormRouteArgs({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -283,12 +335,12 @@ class TaskFormRouteArgs {
 }
 
 /// generated route for
-/// [_i9.TaskInfoScreen]
-class TaskInfoRoute extends _i10.PageRouteInfo<TaskInfoRouteArgs> {
+/// [_i10.TaskInfoScreen]
+class TaskInfoRoute extends _i11.PageRouteInfo<TaskInfoRouteArgs> {
   TaskInfoRoute({
-    _i11.Key? key,
-    required _i12.Task task,
-    List<_i10.PageRouteInfo>? children,
+    _i12.Key? key,
+    required _i13.Task task,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           TaskInfoRoute.name,
           args: TaskInfoRouteArgs(
@@ -300,8 +352,8 @@ class TaskInfoRoute extends _i10.PageRouteInfo<TaskInfoRouteArgs> {
 
   static const String name = 'TaskInfoRoute';
 
-  static const _i10.PageInfo<TaskInfoRouteArgs> page =
-      _i10.PageInfo<TaskInfoRouteArgs>(name);
+  static const _i11.PageInfo<TaskInfoRouteArgs> page =
+      _i11.PageInfo<TaskInfoRouteArgs>(name);
 }
 
 class TaskInfoRouteArgs {
@@ -310,9 +362,9 @@ class TaskInfoRouteArgs {
     required this.task,
   });
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
-  final _i12.Task task;
+  final _i13.Task task;
 
   @override
   String toString() {

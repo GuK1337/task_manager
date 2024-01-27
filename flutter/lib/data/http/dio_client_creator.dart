@@ -9,8 +9,8 @@ abstract class DioClientCreator {
 }
 
 class DioClientCreatorImpl implements DioClientCreator {
-  static const defaultConnectTimeout = 5000;
-  static const defaultReceiveTimeout = 25000;
+  static const defaultConnectTimeout = Duration(milliseconds: 5000);
+  static const defaultReceiveTimeout = Duration(milliseconds: 25000);
 
   DioClientCreatorImpl({
     required this.appEnvironment,

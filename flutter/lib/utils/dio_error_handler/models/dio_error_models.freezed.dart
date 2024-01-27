@@ -95,25 +95,26 @@ class _$CommonResponseErrorCopyWithImpl<Custom, $Res,
 }
 
 /// @nodoc
-abstract class _$$_NoNetworkCopyWith<Custom, $Res> {
-  factory _$$_NoNetworkCopyWith(_$_NoNetwork<Custom> value,
-          $Res Function(_$_NoNetwork<Custom>) then) =
-      __$$_NoNetworkCopyWithImpl<Custom, $Res>;
+abstract class _$$NoNetworkImplCopyWith<Custom, $Res> {
+  factory _$$NoNetworkImplCopyWith(_$NoNetworkImpl<Custom> value,
+          $Res Function(_$NoNetworkImpl<Custom>) then) =
+      __$$NoNetworkImplCopyWithImpl<Custom, $Res>;
 }
 
 /// @nodoc
-class __$$_NoNetworkCopyWithImpl<Custom, $Res>
+class __$$NoNetworkImplCopyWithImpl<Custom, $Res>
     extends _$CommonResponseErrorCopyWithImpl<Custom, $Res,
-        _$_NoNetwork<Custom>> implements _$$_NoNetworkCopyWith<Custom, $Res> {
-  __$$_NoNetworkCopyWithImpl(
-      _$_NoNetwork<Custom> _value, $Res Function(_$_NoNetwork<Custom>) _then)
+        _$NoNetworkImpl<Custom>>
+    implements _$$NoNetworkImplCopyWith<Custom, $Res> {
+  __$$NoNetworkImplCopyWithImpl(_$NoNetworkImpl<Custom> _value,
+      $Res Function(_$NoNetworkImpl<Custom>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NoNetwork<Custom> extends _NoNetwork<Custom> {
-  const _$_NoNetwork() : super._();
+class _$NoNetworkImpl<Custom> extends _NoNetwork<Custom> {
+  const _$NoNetworkImpl() : super._();
 
   @override
   String toString() {
@@ -121,9 +122,9 @@ class _$_NoNetwork<Custom> extends _NoNetwork<Custom> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoNetwork<Custom>);
+        (other.runtimeType == runtimeType && other is _$NoNetworkImpl<Custom>);
   }
 
   @override
@@ -211,31 +212,31 @@ class _$_NoNetwork<Custom> extends _NoNetwork<Custom> {
 }
 
 abstract class _NoNetwork<Custom> extends CommonResponseError<Custom> {
-  const factory _NoNetwork() = _$_NoNetwork<Custom>;
+  const factory _NoNetwork() = _$NoNetworkImpl<Custom>;
   const _NoNetwork._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_UnAuthorizedCopyWith<Custom, $Res> {
-  factory _$$_UnAuthorizedCopyWith(_$_UnAuthorized<Custom> value,
-          $Res Function(_$_UnAuthorized<Custom>) then) =
-      __$$_UnAuthorizedCopyWithImpl<Custom, $Res>;
+abstract class _$$UnAuthorizedImplCopyWith<Custom, $Res> {
+  factory _$$UnAuthorizedImplCopyWith(_$UnAuthorizedImpl<Custom> value,
+          $Res Function(_$UnAuthorizedImpl<Custom>) then) =
+      __$$UnAuthorizedImplCopyWithImpl<Custom, $Res>;
 }
 
 /// @nodoc
-class __$$_UnAuthorizedCopyWithImpl<Custom, $Res>
+class __$$UnAuthorizedImplCopyWithImpl<Custom, $Res>
     extends _$CommonResponseErrorCopyWithImpl<Custom, $Res,
-        _$_UnAuthorized<Custom>>
-    implements _$$_UnAuthorizedCopyWith<Custom, $Res> {
-  __$$_UnAuthorizedCopyWithImpl(_$_UnAuthorized<Custom> _value,
-      $Res Function(_$_UnAuthorized<Custom>) _then)
+        _$UnAuthorizedImpl<Custom>>
+    implements _$$UnAuthorizedImplCopyWith<Custom, $Res> {
+  __$$UnAuthorizedImplCopyWithImpl(_$UnAuthorizedImpl<Custom> _value,
+      $Res Function(_$UnAuthorizedImpl<Custom>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnAuthorized<Custom> extends _UnAuthorized<Custom> {
-  const _$_UnAuthorized() : super._();
+class _$UnAuthorizedImpl<Custom> extends _UnAuthorized<Custom> {
+  const _$UnAuthorizedImpl() : super._();
 
   @override
   String toString() {
@@ -243,9 +244,10 @@ class _$_UnAuthorized<Custom> extends _UnAuthorized<Custom> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnAuthorized<Custom>);
+        (other.runtimeType == runtimeType &&
+            other is _$UnAuthorizedImpl<Custom>);
   }
 
   @override
@@ -333,31 +335,31 @@ class _$_UnAuthorized<Custom> extends _UnAuthorized<Custom> {
 }
 
 abstract class _UnAuthorized<Custom> extends CommonResponseError<Custom> {
-  const factory _UnAuthorized() = _$_UnAuthorized<Custom>;
+  const factory _UnAuthorized() = _$UnAuthorizedImpl<Custom>;
   const _UnAuthorized._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_TooManyRequestsCopyWith<Custom, $Res> {
-  factory _$$_TooManyRequestsCopyWith(_$_TooManyRequests<Custom> value,
-          $Res Function(_$_TooManyRequests<Custom>) then) =
-      __$$_TooManyRequestsCopyWithImpl<Custom, $Res>;
+abstract class _$$TooManyRequestsImplCopyWith<Custom, $Res> {
+  factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl<Custom> value,
+          $Res Function(_$TooManyRequestsImpl<Custom>) then) =
+      __$$TooManyRequestsImplCopyWithImpl<Custom, $Res>;
 }
 
 /// @nodoc
-class __$$_TooManyRequestsCopyWithImpl<Custom, $Res>
+class __$$TooManyRequestsImplCopyWithImpl<Custom, $Res>
     extends _$CommonResponseErrorCopyWithImpl<Custom, $Res,
-        _$_TooManyRequests<Custom>>
-    implements _$$_TooManyRequestsCopyWith<Custom, $Res> {
-  __$$_TooManyRequestsCopyWithImpl(_$_TooManyRequests<Custom> _value,
-      $Res Function(_$_TooManyRequests<Custom>) _then)
+        _$TooManyRequestsImpl<Custom>>
+    implements _$$TooManyRequestsImplCopyWith<Custom, $Res> {
+  __$$TooManyRequestsImplCopyWithImpl(_$TooManyRequestsImpl<Custom> _value,
+      $Res Function(_$TooManyRequestsImpl<Custom>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TooManyRequests<Custom> extends _TooManyRequests<Custom> {
-  const _$_TooManyRequests() : super._();
+class _$TooManyRequestsImpl<Custom> extends _TooManyRequests<Custom> {
+  const _$TooManyRequestsImpl() : super._();
 
   @override
   String toString() {
@@ -365,10 +367,10 @@ class _$_TooManyRequests<Custom> extends _TooManyRequests<Custom> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TooManyRequests<Custom>);
+            other is _$TooManyRequestsImpl<Custom>);
   }
 
   @override
@@ -456,26 +458,26 @@ class _$_TooManyRequests<Custom> extends _TooManyRequests<Custom> {
 }
 
 abstract class _TooManyRequests<Custom> extends CommonResponseError<Custom> {
-  const factory _TooManyRequests() = _$_TooManyRequests<Custom>;
+  const factory _TooManyRequests() = _$TooManyRequestsImpl<Custom>;
   const _TooManyRequests._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_CustomErrorCopyWith<Custom, $Res> {
-  factory _$$_CustomErrorCopyWith(_$_CustomError<Custom> value,
-          $Res Function(_$_CustomError<Custom>) then) =
-      __$$_CustomErrorCopyWithImpl<Custom, $Res>;
+abstract class _$$CustomErrorImplCopyWith<Custom, $Res> {
+  factory _$$CustomErrorImplCopyWith(_$CustomErrorImpl<Custom> value,
+          $Res Function(_$CustomErrorImpl<Custom>) then) =
+      __$$CustomErrorImplCopyWithImpl<Custom, $Res>;
   @useResult
   $Res call({Custom customError});
 }
 
 /// @nodoc
-class __$$_CustomErrorCopyWithImpl<Custom, $Res>
+class __$$CustomErrorImplCopyWithImpl<Custom, $Res>
     extends _$CommonResponseErrorCopyWithImpl<Custom, $Res,
-        _$_CustomError<Custom>>
-    implements _$$_CustomErrorCopyWith<Custom, $Res> {
-  __$$_CustomErrorCopyWithImpl(_$_CustomError<Custom> _value,
-      $Res Function(_$_CustomError<Custom>) _then)
+        _$CustomErrorImpl<Custom>>
+    implements _$$CustomErrorImplCopyWith<Custom, $Res> {
+  __$$CustomErrorImplCopyWithImpl(_$CustomErrorImpl<Custom> _value,
+      $Res Function(_$CustomErrorImpl<Custom>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +485,7 @@ class __$$_CustomErrorCopyWithImpl<Custom, $Res>
   $Res call({
     Object? customError = freezed,
   }) {
-    return _then(_$_CustomError<Custom>(
+    return _then(_$CustomErrorImpl<Custom>(
       freezed == customError
           ? _value.customError
           : customError // ignore: cast_nullable_to_non_nullable
@@ -494,8 +496,8 @@ class __$$_CustomErrorCopyWithImpl<Custom, $Res>
 
 /// @nodoc
 
-class _$_CustomError<Custom> extends _CustomError<Custom> {
-  const _$_CustomError(this.customError) : super._();
+class _$CustomErrorImpl<Custom> extends _CustomError<Custom> {
+  const _$CustomErrorImpl(this.customError) : super._();
 
   @override
   final Custom customError;
@@ -506,10 +508,10 @@ class _$_CustomError<Custom> extends _CustomError<Custom> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomError<Custom> &&
+            other is _$CustomErrorImpl<Custom> &&
             const DeepCollectionEquality()
                 .equals(other.customError, customError));
   }
@@ -521,8 +523,8 @@ class _$_CustomError<Custom> extends _CustomError<Custom> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomErrorCopyWith<Custom, _$_CustomError<Custom>> get copyWith =>
-      __$$_CustomErrorCopyWithImpl<Custom, _$_CustomError<Custom>>(
+  _$$CustomErrorImplCopyWith<Custom, _$CustomErrorImpl<Custom>> get copyWith =>
+      __$$CustomErrorImplCopyWithImpl<Custom, _$CustomErrorImpl<Custom>>(
           this, _$identity);
 
   @override
@@ -607,31 +609,32 @@ class _$_CustomError<Custom> extends _CustomError<Custom> {
 }
 
 abstract class _CustomError<Custom> extends CommonResponseError<Custom> {
-  const factory _CustomError(final Custom customError) = _$_CustomError<Custom>;
+  const factory _CustomError(final Custom customError) =
+      _$CustomErrorImpl<Custom>;
   const _CustomError._() : super._();
 
   Custom get customError;
   @JsonKey(ignore: true)
-  _$$_CustomErrorCopyWith<Custom, _$_CustomError<Custom>> get copyWith =>
+  _$$CustomErrorImplCopyWith<Custom, _$CustomErrorImpl<Custom>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UndefinedErrorCopyWith<Custom, $Res> {
-  factory _$$_UndefinedErrorCopyWith(_$_UndefinedError<Custom> value,
-          $Res Function(_$_UndefinedError<Custom>) then) =
-      __$$_UndefinedErrorCopyWithImpl<Custom, $Res>;
+abstract class _$$UndefinedErrorImplCopyWith<Custom, $Res> {
+  factory _$$UndefinedErrorImplCopyWith(_$UndefinedErrorImpl<Custom> value,
+          $Res Function(_$UndefinedErrorImpl<Custom>) then) =
+      __$$UndefinedErrorImplCopyWithImpl<Custom, $Res>;
   @useResult
   $Res call({Object? errorObject});
 }
 
 /// @nodoc
-class __$$_UndefinedErrorCopyWithImpl<Custom, $Res>
+class __$$UndefinedErrorImplCopyWithImpl<Custom, $Res>
     extends _$CommonResponseErrorCopyWithImpl<Custom, $Res,
-        _$_UndefinedError<Custom>>
-    implements _$$_UndefinedErrorCopyWith<Custom, $Res> {
-  __$$_UndefinedErrorCopyWithImpl(_$_UndefinedError<Custom> _value,
-      $Res Function(_$_UndefinedError<Custom>) _then)
+        _$UndefinedErrorImpl<Custom>>
+    implements _$$UndefinedErrorImplCopyWith<Custom, $Res> {
+  __$$UndefinedErrorImplCopyWithImpl(_$UndefinedErrorImpl<Custom> _value,
+      $Res Function(_$UndefinedErrorImpl<Custom>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -639,7 +642,7 @@ class __$$_UndefinedErrorCopyWithImpl<Custom, $Res>
   $Res call({
     Object? errorObject = freezed,
   }) {
-    return _then(_$_UndefinedError<Custom>(
+    return _then(_$UndefinedErrorImpl<Custom>(
       freezed == errorObject ? _value.errorObject : errorObject,
     ));
   }
@@ -647,8 +650,8 @@ class __$$_UndefinedErrorCopyWithImpl<Custom, $Res>
 
 /// @nodoc
 
-class _$_UndefinedError<Custom> extends _UndefinedError<Custom> {
-  const _$_UndefinedError(this.errorObject) : super._();
+class _$UndefinedErrorImpl<Custom> extends _UndefinedError<Custom> {
+  const _$UndefinedErrorImpl(this.errorObject) : super._();
 
   @override
   final Object? errorObject;
@@ -659,10 +662,10 @@ class _$_UndefinedError<Custom> extends _UndefinedError<Custom> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UndefinedError<Custom> &&
+            other is _$UndefinedErrorImpl<Custom> &&
             const DeepCollectionEquality()
                 .equals(other.errorObject, errorObject));
   }
@@ -674,9 +677,9 @@ class _$_UndefinedError<Custom> extends _UndefinedError<Custom> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UndefinedErrorCopyWith<Custom, _$_UndefinedError<Custom>> get copyWith =>
-      __$$_UndefinedErrorCopyWithImpl<Custom, _$_UndefinedError<Custom>>(
-          this, _$identity);
+  _$$UndefinedErrorImplCopyWith<Custom, _$UndefinedErrorImpl<Custom>>
+      get copyWith => __$$UndefinedErrorImplCopyWithImpl<Custom,
+          _$UndefinedErrorImpl<Custom>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -761,13 +764,13 @@ class _$_UndefinedError<Custom> extends _UndefinedError<Custom> {
 
 abstract class _UndefinedError<Custom> extends CommonResponseError<Custom> {
   const factory _UndefinedError(final Object? errorObject) =
-      _$_UndefinedError<Custom>;
+      _$UndefinedErrorImpl<Custom>;
   const _UndefinedError._() : super._();
 
   Object? get errorObject;
   @JsonKey(ignore: true)
-  _$$_UndefinedErrorCopyWith<Custom, _$_UndefinedError<Custom>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UndefinedErrorImplCopyWith<Custom, _$UndefinedErrorImpl<Custom>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 DefaultApiError _$DefaultApiErrorFromJson(Map<String, dynamic> json) {
@@ -824,22 +827,22 @@ class _$DefaultApiErrorCopyWithImpl<$Res, $Val extends DefaultApiError>
 }
 
 /// @nodoc
-abstract class _$$_DefaultApiErrorCopyWith<$Res>
+abstract class _$$DefaultApiErrorImplCopyWith<$Res>
     implements $DefaultApiErrorCopyWith<$Res> {
-  factory _$$_DefaultApiErrorCopyWith(
-          _$_DefaultApiError value, $Res Function(_$_DefaultApiError) then) =
-      __$$_DefaultApiErrorCopyWithImpl<$Res>;
+  factory _$$DefaultApiErrorImplCopyWith(_$DefaultApiErrorImpl value,
+          $Res Function(_$DefaultApiErrorImpl) then) =
+      __$$DefaultApiErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String msg, String code});
 }
 
 /// @nodoc
-class __$$_DefaultApiErrorCopyWithImpl<$Res>
-    extends _$DefaultApiErrorCopyWithImpl<$Res, _$_DefaultApiError>
-    implements _$$_DefaultApiErrorCopyWith<$Res> {
-  __$$_DefaultApiErrorCopyWithImpl(
-      _$_DefaultApiError _value, $Res Function(_$_DefaultApiError) _then)
+class __$$DefaultApiErrorImplCopyWithImpl<$Res>
+    extends _$DefaultApiErrorCopyWithImpl<$Res, _$DefaultApiErrorImpl>
+    implements _$$DefaultApiErrorImplCopyWith<$Res> {
+  __$$DefaultApiErrorImplCopyWithImpl(
+      _$DefaultApiErrorImpl _value, $Res Function(_$DefaultApiErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -848,7 +851,7 @@ class __$$_DefaultApiErrorCopyWithImpl<$Res>
     Object? msg = null,
     Object? code = null,
   }) {
-    return _then(_$_DefaultApiError(
+    return _then(_$DefaultApiErrorImpl(
       msg: null == msg
           ? _value.msg
           : msg // ignore: cast_nullable_to_non_nullable
@@ -863,11 +866,11 @@ class __$$_DefaultApiErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DefaultApiError implements _DefaultApiError {
-  const _$_DefaultApiError({required this.msg, required this.code});
+class _$DefaultApiErrorImpl implements _DefaultApiError {
+  const _$DefaultApiErrorImpl({required this.msg, required this.code});
 
-  factory _$_DefaultApiError.fromJson(Map<String, dynamic> json) =>
-      _$$_DefaultApiErrorFromJson(json);
+  factory _$DefaultApiErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DefaultApiErrorImplFromJson(json);
 
   @override
   final String msg;
@@ -880,10 +883,10 @@ class _$_DefaultApiError implements _DefaultApiError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DefaultApiError &&
+            other is _$DefaultApiErrorImpl &&
             (identical(other.msg, msg) || other.msg == msg) &&
             (identical(other.code, code) || other.code == code));
   }
@@ -895,12 +898,13 @@ class _$_DefaultApiError implements _DefaultApiError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DefaultApiErrorCopyWith<_$_DefaultApiError> get copyWith =>
-      __$$_DefaultApiErrorCopyWithImpl<_$_DefaultApiError>(this, _$identity);
+  _$$DefaultApiErrorImplCopyWith<_$DefaultApiErrorImpl> get copyWith =>
+      __$$DefaultApiErrorImplCopyWithImpl<_$DefaultApiErrorImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DefaultApiErrorToJson(
+    return _$$DefaultApiErrorImplToJson(
       this,
     );
   }
@@ -909,10 +913,10 @@ class _$_DefaultApiError implements _DefaultApiError {
 abstract class _DefaultApiError implements DefaultApiError {
   const factory _DefaultApiError(
       {required final String msg,
-      required final String code}) = _$_DefaultApiError;
+      required final String code}) = _$DefaultApiErrorImpl;
 
   factory _DefaultApiError.fromJson(Map<String, dynamic> json) =
-      _$_DefaultApiError.fromJson;
+      _$DefaultApiErrorImpl.fromJson;
 
   @override
   String get msg;
@@ -920,6 +924,6 @@ abstract class _DefaultApiError implements DefaultApiError {
   String get code;
   @override
   @JsonKey(ignore: true)
-  _$$_DefaultApiErrorCopyWith<_$_DefaultApiError> get copyWith =>
+  _$$DefaultApiErrorImplCopyWith<_$DefaultApiErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

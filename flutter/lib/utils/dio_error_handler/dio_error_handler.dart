@@ -28,7 +28,6 @@ class DioErrorHandlerImpl<DE> implements DioErrorHandler<DE> {
   static const retryStatusCodesWithoutBadReq = [
     _HttpStatus.notFound,
     _HttpStatus.forbidden,
-    _HttpStatus.unauthorized,
     _HttpStatus.unsupportedMediaType,
   ];
 
@@ -91,7 +90,7 @@ class DioErrorHandlerImpl<DE> implements DioErrorHandler<DE> {
         }
       }
       return ApiResponse.success(response);
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return ApiResponse.error(await _processDioError(e));
     } on Exception catch (e) {
       return ApiResponse.error(CommonResponseError.undefinedError(e));
@@ -103,8 +102,8 @@ class DioErrorHandlerImpl<DE> implements DioErrorHandler<DE> {
     required Exception exception,
     required List<int> retryStatusCodes,
   }) {
-    if (exception is! DioError) return false;
-    if (exception.type == DioErrorType.cancel) return false;
+    if (exception is! DioException) return false;
+    if (exception.type == DioExceptionType.cancel) return false;
     final response = exception.response;
     if (response == null) {
       return true;
@@ -113,12 +112,12 @@ class DioErrorHandlerImpl<DE> implements DioErrorHandler<DE> {
     return retryStatusCodes.contains(response.statusCode);
   }
 
-  Future<CommonResponseError<DE>> _processDioError(DioError e) async {
+  Future<CommonResponseError<DE>> _processDioError(DioException e) async {
     final responseData = e.response?.data;
     final statusCode = e.response?.statusCode;
 
-    if (e.type == DioErrorType.connectTimeout ||
-        e.type == DioErrorType.sendTimeout ||
+    if (e.type == DioExceptionType.connectionTimeout ||
+        e.type == DioExceptionType.sendTimeout ||
         statusCode == _HttpStatus.networkConnectTimeoutError) {
       return const CommonResponseError.noNetwork();
     }

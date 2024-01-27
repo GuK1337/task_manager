@@ -124,9 +124,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
 }
 
 /// @nodoc
-abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
-  factory _$$_TaskCopyWith(_$_Task value, $Res Function(_$_Task) then) =
-      __$$_TaskCopyWithImpl<$Res>;
+abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
+  factory _$$TaskImplCopyWith(
+          _$TaskImpl value, $Res Function(_$TaskImpl) then) =
+      __$$TaskImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -143,9 +144,10 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
-    implements _$$_TaskCopyWith<$Res> {
-  __$$_TaskCopyWithImpl(_$_Task _value, $Res Function(_$_Task) _then)
+class __$$TaskImplCopyWithImpl<$Res>
+    extends _$TaskCopyWithImpl<$Res, _$TaskImpl>
+    implements _$$TaskImplCopyWith<$Res> {
+  __$$TaskImplCopyWithImpl(_$TaskImpl _value, $Res Function(_$TaskImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -162,7 +164,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
     Object? image = freezed,
     Object? actions = null,
   }) {
-    return _then(_$_Task(
+    return _then(_$TaskImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -209,8 +211,8 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Task with DiagnosticableTreeMixin implements _Task {
-  const _$_Task(
+class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
+  const _$TaskImpl(
       {required this.id,
       required this.creator,
       this.executor,
@@ -223,7 +225,8 @@ class _$_Task with DiagnosticableTreeMixin implements _Task {
       final Set<TaskActions> actions = const {}})
       : _actions = actions;
 
-  factory _$_Task.fromJson(Map<String, dynamic> json) => _$$_TaskFromJson(json);
+  factory _$TaskImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaskImplFromJson(json);
 
   @override
   final int id;
@@ -275,10 +278,10 @@ class _$_Task with DiagnosticableTreeMixin implements _Task {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Task &&
+            other is _$TaskImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.creator, creator) || other.creator == creator) &&
             (identical(other.executor, executor) ||
@@ -313,12 +316,12 @@ class _$_Task with DiagnosticableTreeMixin implements _Task {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaskCopyWith<_$_Task> get copyWith =>
-      __$$_TaskCopyWithImpl<_$_Task>(this, _$identity);
+  _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
+      __$$TaskImplCopyWithImpl<_$TaskImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaskToJson(
+    return _$$TaskImplToJson(
       this,
     );
   }
@@ -335,9 +338,9 @@ abstract class _Task implements Task {
       final String? description,
       required final TaskStatus status,
       final String? image,
-      final Set<TaskActions> actions}) = _$_Task;
+      final Set<TaskActions> actions}) = _$TaskImpl;
 
-  factory _Task.fromJson(Map<String, dynamic> json) = _$_Task.fromJson;
+  factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
 
   @override
   int get id;
@@ -361,5 +364,6 @@ abstract class _Task implements Task {
   Set<TaskActions> get actions;
   @override
   @JsonKey(ignore: true)
-  _$$_TaskCopyWith<_$_Task> get copyWith => throw _privateConstructorUsedError;
+  _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

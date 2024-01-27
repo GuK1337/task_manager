@@ -73,11 +73,11 @@ class _$TaskInfoStateCopyWithImpl<$Res, $Val extends TaskInfoState>
 }
 
 /// @nodoc
-abstract class _$$_TaskInfoStateCopyWith<$Res>
+abstract class _$$TaskInfoStateImplCopyWith<$Res>
     implements $TaskInfoStateCopyWith<$Res> {
-  factory _$$_TaskInfoStateCopyWith(
-          _$_TaskInfoState value, $Res Function(_$_TaskInfoState) then) =
-      __$$_TaskInfoStateCopyWithImpl<$Res>;
+  factory _$$TaskInfoStateImplCopyWith(
+          _$TaskInfoStateImpl value, $Res Function(_$TaskInfoStateImpl) then) =
+      __$$TaskInfoStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Task task, TaskInfoStatus status});
@@ -87,11 +87,11 @@ abstract class _$$_TaskInfoStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TaskInfoStateCopyWithImpl<$Res>
-    extends _$TaskInfoStateCopyWithImpl<$Res, _$_TaskInfoState>
-    implements _$$_TaskInfoStateCopyWith<$Res> {
-  __$$_TaskInfoStateCopyWithImpl(
-      _$_TaskInfoState _value, $Res Function(_$_TaskInfoState) _then)
+class __$$TaskInfoStateImplCopyWithImpl<$Res>
+    extends _$TaskInfoStateCopyWithImpl<$Res, _$TaskInfoStateImpl>
+    implements _$$TaskInfoStateImplCopyWith<$Res> {
+  __$$TaskInfoStateImplCopyWithImpl(
+      _$TaskInfoStateImpl _value, $Res Function(_$TaskInfoStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_TaskInfoStateCopyWithImpl<$Res>
     Object? task = null,
     Object? status = null,
   }) {
-    return _then(_$_TaskInfoState(
+    return _then(_$TaskInfoStateImpl(
       task: null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_TaskInfoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TaskInfoState implements _TaskInfoState {
-  const _$_TaskInfoState(
+class _$TaskInfoStateImpl implements _TaskInfoState {
+  const _$TaskInfoStateImpl(
       {required this.task, this.status = TaskInfoStatus.ready});
 
   @override
@@ -131,10 +131,10 @@ class _$_TaskInfoState implements _TaskInfoState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaskInfoState &&
+            other is _$TaskInfoStateImpl &&
             (identical(other.task, task) || other.task == task) &&
             (identical(other.status, status) || other.status == status));
   }
@@ -145,14 +145,14 @@ class _$_TaskInfoState implements _TaskInfoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaskInfoStateCopyWith<_$_TaskInfoState> get copyWith =>
-      __$$_TaskInfoStateCopyWithImpl<_$_TaskInfoState>(this, _$identity);
+  _$$TaskInfoStateImplCopyWith<_$TaskInfoStateImpl> get copyWith =>
+      __$$TaskInfoStateImplCopyWithImpl<_$TaskInfoStateImpl>(this, _$identity);
 }
 
 abstract class _TaskInfoState implements TaskInfoState {
   const factory _TaskInfoState(
       {required final Task task,
-      final TaskInfoStatus status}) = _$_TaskInfoState;
+      final TaskInfoStatus status}) = _$TaskInfoStateImpl;
 
   @override
   Task get task;
@@ -160,7 +160,7 @@ abstract class _TaskInfoState implements TaskInfoState {
   TaskInfoStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$_TaskInfoStateCopyWith<_$_TaskInfoState> get copyWith =>
+  _$$TaskInfoStateImplCopyWith<_$TaskInfoStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -231,19 +231,20 @@ class _$TaskInfoSrCopyWithImpl<$Res, $Val extends TaskInfoSr>
 }
 
 /// @nodoc
-abstract class _$$_ErrorSrCopyWith<$Res> {
-  factory _$$_ErrorSrCopyWith(
-          _$_ErrorSr value, $Res Function(_$_ErrorSr) then) =
-      __$$_ErrorSrCopyWithImpl<$Res>;
+abstract class _$$ErrorSrImplCopyWith<$Res> {
+  factory _$$ErrorSrImplCopyWith(
+          _$ErrorSrImpl value, $Res Function(_$ErrorSrImpl) then) =
+      __$$ErrorSrImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorSrCopyWithImpl<$Res>
-    extends _$TaskInfoSrCopyWithImpl<$Res, _$_ErrorSr>
-    implements _$$_ErrorSrCopyWith<$Res> {
-  __$$_ErrorSrCopyWithImpl(_$_ErrorSr _value, $Res Function(_$_ErrorSr) _then)
+class __$$ErrorSrImplCopyWithImpl<$Res>
+    extends _$TaskInfoSrCopyWithImpl<$Res, _$ErrorSrImpl>
+    implements _$$ErrorSrImplCopyWith<$Res> {
+  __$$ErrorSrImplCopyWithImpl(
+      _$ErrorSrImpl _value, $Res Function(_$ErrorSrImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -251,7 +252,7 @@ class __$$_ErrorSrCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_ErrorSr(
+    return _then(_$ErrorSrImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -262,8 +263,8 @@ class __$$_ErrorSrCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorSr implements _ErrorSr {
-  const _$_ErrorSr(this.error);
+class _$ErrorSrImpl implements _ErrorSr {
+  const _$ErrorSrImpl(this.error);
 
   @override
   final String error;
@@ -274,10 +275,10 @@ class _$_ErrorSr implements _ErrorSr {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorSr &&
+            other is _$ErrorSrImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -287,8 +288,8 @@ class _$_ErrorSr implements _ErrorSr {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorSrCopyWith<_$_ErrorSr> get copyWith =>
-      __$$_ErrorSrCopyWithImpl<_$_ErrorSr>(this, _$identity);
+  _$$ErrorSrImplCopyWith<_$ErrorSrImpl> get copyWith =>
+      __$$ErrorSrImplCopyWithImpl<_$ErrorSrImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -360,34 +361,34 @@ class _$_ErrorSr implements _ErrorSr {
 }
 
 abstract class _ErrorSr implements TaskInfoSr {
-  const factory _ErrorSr(final String error) = _$_ErrorSr;
+  const factory _ErrorSr(final String error) = _$ErrorSrImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ErrorSrCopyWith<_$_ErrorSr> get copyWith =>
+  _$$ErrorSrImplCopyWith<_$ErrorSrImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SucessSrCopyWith<$Res> {
-  factory _$$_SucessSrCopyWith(
-          _$_SucessSr value, $Res Function(_$_SucessSr) then) =
-      __$$_SucessSrCopyWithImpl<$Res>;
+abstract class _$$SucessSrImplCopyWith<$Res> {
+  factory _$$SucessSrImplCopyWith(
+          _$SucessSrImpl value, $Res Function(_$SucessSrImpl) then) =
+      __$$SucessSrImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SucessSrCopyWithImpl<$Res>
-    extends _$TaskInfoSrCopyWithImpl<$Res, _$_SucessSr>
-    implements _$$_SucessSrCopyWith<$Res> {
-  __$$_SucessSrCopyWithImpl(
-      _$_SucessSr _value, $Res Function(_$_SucessSr) _then)
+class __$$SucessSrImplCopyWithImpl<$Res>
+    extends _$TaskInfoSrCopyWithImpl<$Res, _$SucessSrImpl>
+    implements _$$SucessSrImplCopyWith<$Res> {
+  __$$SucessSrImplCopyWithImpl(
+      _$SucessSrImpl _value, $Res Function(_$SucessSrImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SucessSr implements _SucessSr {
-  const _$_SucessSr();
+class _$SucessSrImpl implements _SucessSr {
+  const _$SucessSrImpl();
 
   @override
   String toString() {
@@ -395,9 +396,9 @@ class _$_SucessSr implements _SucessSr {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SucessSr);
+        (other.runtimeType == runtimeType && other is _$SucessSrImpl);
   }
 
   @override
@@ -473,29 +474,29 @@ class _$_SucessSr implements _SucessSr {
 }
 
 abstract class _SucessSr implements TaskInfoSr {
-  const factory _SucessSr() = _$_SucessSr;
+  const factory _SucessSr() = _$SucessSrImpl;
 }
 
 /// @nodoc
-abstract class _$$_DeletedSrCopyWith<$Res> {
-  factory _$$_DeletedSrCopyWith(
-          _$_DeletedSr value, $Res Function(_$_DeletedSr) then) =
-      __$$_DeletedSrCopyWithImpl<$Res>;
+abstract class _$$DeletedSrImplCopyWith<$Res> {
+  factory _$$DeletedSrImplCopyWith(
+          _$DeletedSrImpl value, $Res Function(_$DeletedSrImpl) then) =
+      __$$DeletedSrImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DeletedSrCopyWithImpl<$Res>
-    extends _$TaskInfoSrCopyWithImpl<$Res, _$_DeletedSr>
-    implements _$$_DeletedSrCopyWith<$Res> {
-  __$$_DeletedSrCopyWithImpl(
-      _$_DeletedSr _value, $Res Function(_$_DeletedSr) _then)
+class __$$DeletedSrImplCopyWithImpl<$Res>
+    extends _$TaskInfoSrCopyWithImpl<$Res, _$DeletedSrImpl>
+    implements _$$DeletedSrImplCopyWith<$Res> {
+  __$$DeletedSrImplCopyWithImpl(
+      _$DeletedSrImpl _value, $Res Function(_$DeletedSrImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_DeletedSr implements _DeletedSr {
-  const _$_DeletedSr();
+class _$DeletedSrImpl implements _DeletedSr {
+  const _$DeletedSrImpl();
 
   @override
   String toString() {
@@ -503,9 +504,9 @@ class _$_DeletedSr implements _DeletedSr {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DeletedSr);
+        (other.runtimeType == runtimeType && other is _$DeletedSrImpl);
   }
 
   @override
@@ -581,5 +582,5 @@ class _$_DeletedSr implements _DeletedSr {
 }
 
 abstract class _DeletedSr implements TaskInfoSr {
-  const factory _DeletedSr() = _$_DeletedSr;
+  const factory _DeletedSr() = _$DeletedSrImpl;
 }

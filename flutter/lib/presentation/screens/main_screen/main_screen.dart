@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/repository/auth_repository.dart';
-import 'package:example_app/presentation/app/theme/models/app_insets.dart';
+import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -8,8 +8,8 @@ import 'package:get_it/get_it.dart';
 @RoutePage()
 class MainScreen extends StatefulWidget {
   const MainScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -35,7 +35,6 @@ class _MainScreenState extends State<MainScreen> {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Постановщик задач'),
-            leading: const AutoLeadingButton(),
             actions: [
               IconButton(
                 onPressed: () => context.router.push(TaskFormRoute()),
@@ -103,7 +102,7 @@ class _MainScreenState extends State<MainScreen> {
               },
             ),
             const SizedBox(
-              height: AppInsets.padding,
+              height: AppInsets.padding16,
             ),
             TextButton(
               child: const Text('Да'),

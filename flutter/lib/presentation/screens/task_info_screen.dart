@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/task/task.dart';
 import 'package:example_app/domain/bloc/task_info_cubit/task_info_cubit.dart';
-import 'package:example_app/presentation/app/theme/models/app_insets.dart';
+import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/components/separated_widgets.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
 import 'package:example_app/utils/sr_bloc/sr_bloc_builder.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 @RoutePage()
-class TaskInfoScreen extends StatelessWidget with AutoRouteWrapper {
+class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
   const TaskInfoScreen({super.key, required this.task});
 
   final Task task;
@@ -47,21 +47,21 @@ class TaskInfoScreen extends StatelessWidget with AutoRouteWrapper {
               children: [
                 Expanded(
                   child: ListView(
-                    padding: const EdgeInsets.all(AppInsets.padding),
+                    padding: const EdgeInsets.all(AppInsets.padding16),
                     children: [
                       Text(
                         task.title,
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const SizedBox(
-                        height: AppInsets.padding,
+                        height: AppInsets.padding16,
                       ),
                       if (task.description != null) ...[
                         Text(
                           task.description!,
                         ),
                         const SizedBox(
-                          height: AppInsets.padding,
+                          height: AppInsets.padding16,
                         ),
                       ],
                       if (task.image != null)
@@ -77,7 +77,7 @@ class TaskInfoScreen extends StatelessWidget with AutoRouteWrapper {
                     height: 1.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(AppInsets.padding),
+                    padding: const EdgeInsets.all(AppInsets.padding16),
                     child: ButtonWidget(
                       actions: task.actions,
                     ),
@@ -112,7 +112,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SeparatedColumn(
       separator: const SizedBox(
-        height: AppInsets.padding,
+        height: AppInsets.padding16,
       ),
       children: actions.map((e) => _buildButton(context, e)).toList(),
     );

@@ -74,23 +74,25 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$_ReadyCopyWith<$Res> {
-  factory _$$_ReadyCopyWith(_$_Ready value, $Res Function(_$_Ready) then) =
-      __$$_ReadyCopyWithImpl<$Res>;
+abstract class _$$ReadyImplCopyWith<$Res> {
+  factory _$$ReadyImplCopyWith(
+          _$ReadyImpl value, $Res Function(_$ReadyImpl) then) =
+      __$$ReadyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReadyCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Ready>
-    implements _$$_ReadyCopyWith<$Res> {
-  __$$_ReadyCopyWithImpl(_$_Ready _value, $Res Function(_$_Ready) _then)
+class __$$ReadyImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$ReadyImpl>
+    implements _$$ReadyImplCopyWith<$Res> {
+  __$$ReadyImplCopyWithImpl(
+      _$ReadyImpl _value, $Res Function(_$ReadyImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Ready implements _Ready {
-  const _$_Ready();
+class _$ReadyImpl implements _Ready {
+  const _$ReadyImpl();
 
   @override
   String toString() {
@@ -98,9 +100,9 @@ class _$_Ready implements _Ready {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Ready);
+        (other.runtimeType == runtimeType && other is _$ReadyImpl);
   }
 
   @override
@@ -170,28 +172,29 @@ class _$_Ready implements _Ready {
 }
 
 abstract class _Ready implements AuthState {
-  const factory _Ready() = _$_Ready;
+  const factory _Ready() = _$ReadyImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -199,9 +202,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -271,7 +274,7 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements AuthState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -334,25 +337,25 @@ class _$AuthSrCopyWithImpl<$Res, $Val extends AuthSr>
 }
 
 /// @nodoc
-abstract class _$$_AuthSrLoginCopyWith<$Res> {
-  factory _$$_AuthSrLoginCopyWith(
-          _$_AuthSrLogin value, $Res Function(_$_AuthSrLogin) then) =
-      __$$_AuthSrLoginCopyWithImpl<$Res>;
+abstract class _$$AuthSrLoginImplCopyWith<$Res> {
+  factory _$$AuthSrLoginImplCopyWith(
+          _$AuthSrLoginImpl value, $Res Function(_$AuthSrLoginImpl) then) =
+      __$$AuthSrLoginImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthSrLoginCopyWithImpl<$Res>
-    extends _$AuthSrCopyWithImpl<$Res, _$_AuthSrLogin>
-    implements _$$_AuthSrLoginCopyWith<$Res> {
-  __$$_AuthSrLoginCopyWithImpl(
-      _$_AuthSrLogin _value, $Res Function(_$_AuthSrLogin) _then)
+class __$$AuthSrLoginImplCopyWithImpl<$Res>
+    extends _$AuthSrCopyWithImpl<$Res, _$AuthSrLoginImpl>
+    implements _$$AuthSrLoginImplCopyWith<$Res> {
+  __$$AuthSrLoginImplCopyWithImpl(
+      _$AuthSrLoginImpl _value, $Res Function(_$AuthSrLoginImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AuthSrLogin implements _AuthSrLogin {
-  const _$_AuthSrLogin();
+class _$AuthSrLoginImpl implements _AuthSrLogin {
+  const _$AuthSrLoginImpl();
 
   @override
   String toString() {
@@ -360,9 +363,9 @@ class _$_AuthSrLogin implements _AuthSrLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthSrLogin);
+        (other.runtimeType == runtimeType && other is _$AuthSrLoginImpl);
   }
 
   @override
@@ -432,24 +435,24 @@ class _$_AuthSrLogin implements _AuthSrLogin {
 }
 
 abstract class _AuthSrLogin implements AuthSr {
-  const factory _AuthSrLogin() = _$_AuthSrLogin;
+  const factory _AuthSrLogin() = _$AuthSrLoginImpl;
 }
 
 /// @nodoc
-abstract class _$$_AuthSrErrorCopyWith<$Res> {
-  factory _$$_AuthSrErrorCopyWith(
-          _$_AuthSrError value, $Res Function(_$_AuthSrError) then) =
-      __$$_AuthSrErrorCopyWithImpl<$Res>;
+abstract class _$$AuthSrErrorImplCopyWith<$Res> {
+  factory _$$AuthSrErrorImplCopyWith(
+          _$AuthSrErrorImpl value, $Res Function(_$AuthSrErrorImpl) then) =
+      __$$AuthSrErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_AuthSrErrorCopyWithImpl<$Res>
-    extends _$AuthSrCopyWithImpl<$Res, _$_AuthSrError>
-    implements _$$_AuthSrErrorCopyWith<$Res> {
-  __$$_AuthSrErrorCopyWithImpl(
-      _$_AuthSrError _value, $Res Function(_$_AuthSrError) _then)
+class __$$AuthSrErrorImplCopyWithImpl<$Res>
+    extends _$AuthSrCopyWithImpl<$Res, _$AuthSrErrorImpl>
+    implements _$$AuthSrErrorImplCopyWith<$Res> {
+  __$$AuthSrErrorImplCopyWithImpl(
+      _$AuthSrErrorImpl _value, $Res Function(_$AuthSrErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -457,7 +460,7 @@ class __$$_AuthSrErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_AuthSrError(
+    return _then(_$AuthSrErrorImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -468,8 +471,8 @@ class __$$_AuthSrErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthSrError implements _AuthSrError {
-  const _$_AuthSrError(this.error);
+class _$AuthSrErrorImpl implements _AuthSrError {
+  const _$AuthSrErrorImpl(this.error);
 
   @override
   final String error;
@@ -480,10 +483,10 @@ class _$_AuthSrError implements _AuthSrError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthSrError &&
+            other is _$AuthSrErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -493,8 +496,8 @@ class _$_AuthSrError implements _AuthSrError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthSrErrorCopyWith<_$_AuthSrError> get copyWith =>
-      __$$_AuthSrErrorCopyWithImpl<_$_AuthSrError>(this, _$identity);
+  _$$AuthSrErrorImplCopyWith<_$AuthSrErrorImpl> get copyWith =>
+      __$$AuthSrErrorImplCopyWithImpl<_$AuthSrErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -560,10 +563,10 @@ class _$_AuthSrError implements _AuthSrError {
 }
 
 abstract class _AuthSrError implements AuthSr {
-  const factory _AuthSrError(final String error) = _$_AuthSrError;
+  const factory _AuthSrError(final String error) = _$AuthSrErrorImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_AuthSrErrorCopyWith<_$_AuthSrError> get copyWith =>
+  _$$AuthSrErrorImplCopyWith<_$AuthSrErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

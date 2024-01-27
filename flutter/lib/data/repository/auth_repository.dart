@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:example_app/data/models/auth_response/auth_response.dart';
+import 'package:example_app/data/models/register_response/register_response.dart';
 import 'package:example_app/data/models/user/user.dart';
 import 'package:example_app/data/services/api_service.dart';
 import 'package:example_app/data/services/auth_storage_service.dart';
@@ -16,7 +18,16 @@ abstract class AuthRepository {
 
   bool isAuthorized();
 
-  Future<DefaultResponse<User>> auth(String login);
+  Future<DefaultResponse<User>> auth({
+    required String login,
+    required String password,
+  });
+
+  Future<DefaultResponse<User>> register({
+    required String login,
+    required String password,
+    required String username,
+  });
 
   Future<void> checkToken();
 
@@ -49,9 +60,13 @@ class AuthRepositoryImpl extends AuthRepository {
   bool isAuthorized() => _userSubject.valueOrNull != null;
 
   @override
-  Future<DefaultResponse<User>> auth(String login) async {
+  Future<DefaultResponse<User>> auth({
+    required String login,
+    required String password,
+  }) async {
     try {
-      final response = await apiService.auth(login);
+      final response =
+          await apiService.auth(AuthResponse(login: login, password: password));
       if (response.hasError) {
         _userSubject.sink.add(null);
       } else {
@@ -99,5 +114,26 @@ class AuthRepositoryImpl extends AuthRepository {
   @disposeMethod
   Future<void> dispose() async {
     await _userSubject.close();
+  }
+
+  @override
+  Future<DefaultResponse<User>> register({
+    required String login,
+    required String password,
+    required String username,
+  }) async {
+    try {
+      final response = await apiService.register(RegisterResponse(
+          login: login, password: password, username: username));
+      if (response.hasError) {
+        _userSubject.sink.add(null);
+      } else {
+        final result = await storageService.saveUser(response.result);
+        if (result) _userSubject.sink.add(response.result);
+      }
+      return response;
+    } catch (e) {
+      return ApiResponse.error(CommonResponseError.undefinedError(e));
+    }
   }
 }

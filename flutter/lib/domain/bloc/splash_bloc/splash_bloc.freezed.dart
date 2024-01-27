@@ -87,27 +87,27 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
 }
 
 /// @nodoc
-abstract class _$$SplashInitStateCopyWith<$Res> {
-  factory _$$SplashInitStateCopyWith(
-          _$SplashInitState value, $Res Function(_$SplashInitState) then) =
-      __$$SplashInitStateCopyWithImpl<$Res>;
+abstract class _$$SplashInitStateImplCopyWith<$Res> {
+  factory _$$SplashInitStateImplCopyWith(_$SplashInitStateImpl value,
+          $Res Function(_$SplashInitStateImpl) then) =
+      __$$SplashInitStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SplashInitStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$SplashInitState>
-    implements _$$SplashInitStateCopyWith<$Res> {
-  __$$SplashInitStateCopyWithImpl(
-      _$SplashInitState _value, $Res Function(_$SplashInitState) _then)
+class __$$SplashInitStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashInitStateImpl>
+    implements _$$SplashInitStateImplCopyWith<$Res> {
+  __$$SplashInitStateImplCopyWithImpl(
+      _$SplashInitStateImpl _value, $Res Function(_$SplashInitStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SplashInitState
+class _$SplashInitStateImpl
     with DiagnosticableTreeMixin
     implements SplashInitState {
-  const _$SplashInitState();
+  const _$SplashInitStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -121,9 +121,9 @@ class _$SplashInitState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SplashInitState);
+        (other.runtimeType == runtimeType && other is _$SplashInitStateImpl);
   }
 
   @override
@@ -205,31 +205,31 @@ class _$SplashInitState
 }
 
 abstract class SplashInitState implements SplashState {
-  const factory SplashInitState() = _$SplashInitState;
+  const factory SplashInitState() = _$SplashInitStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SplashLoadingStateCopyWith<$Res> {
-  factory _$$SplashLoadingStateCopyWith(_$SplashLoadingState value,
-          $Res Function(_$SplashLoadingState) then) =
-      __$$SplashLoadingStateCopyWithImpl<$Res>;
+abstract class _$$SplashLoadingStateImplCopyWith<$Res> {
+  factory _$$SplashLoadingStateImplCopyWith(_$SplashLoadingStateImpl value,
+          $Res Function(_$SplashLoadingStateImpl) then) =
+      __$$SplashLoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SplashLoadingStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$SplashLoadingState>
-    implements _$$SplashLoadingStateCopyWith<$Res> {
-  __$$SplashLoadingStateCopyWithImpl(
-      _$SplashLoadingState _value, $Res Function(_$SplashLoadingState) _then)
+class __$$SplashLoadingStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashLoadingStateImpl>
+    implements _$$SplashLoadingStateImplCopyWith<$Res> {
+  __$$SplashLoadingStateImplCopyWithImpl(_$SplashLoadingStateImpl _value,
+      $Res Function(_$SplashLoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SplashLoadingState
+class _$SplashLoadingStateImpl
     with DiagnosticableTreeMixin
     implements SplashLoadingState {
-  const _$SplashLoadingState();
+  const _$SplashLoadingStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -243,9 +243,9 @@ class _$SplashLoadingState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SplashLoadingState);
+        (other.runtimeType == runtimeType && other is _$SplashLoadingStateImpl);
   }
 
   @override
@@ -327,31 +327,31 @@ class _$SplashLoadingState
 }
 
 abstract class SplashLoadingState implements SplashState {
-  const factory SplashLoadingState() = _$SplashLoadingState;
+  const factory SplashLoadingState() = _$SplashLoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SplashReadyStateCopyWith<$Res> {
-  factory _$$SplashReadyStateCopyWith(
-          _$SplashReadyState value, $Res Function(_$SplashReadyState) then) =
-      __$$SplashReadyStateCopyWithImpl<$Res>;
+abstract class _$$SplashReadyStateImplCopyWith<$Res> {
+  factory _$$SplashReadyStateImplCopyWith(_$SplashReadyStateImpl value,
+          $Res Function(_$SplashReadyStateImpl) then) =
+      __$$SplashReadyStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SplashReadyStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$SplashReadyState>
-    implements _$$SplashReadyStateCopyWith<$Res> {
-  __$$SplashReadyStateCopyWithImpl(
-      _$SplashReadyState _value, $Res Function(_$SplashReadyState) _then)
+class __$$SplashReadyStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashReadyStateImpl>
+    implements _$$SplashReadyStateImplCopyWith<$Res> {
+  __$$SplashReadyStateImplCopyWithImpl(_$SplashReadyStateImpl _value,
+      $Res Function(_$SplashReadyStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SplashReadyState
+class _$SplashReadyStateImpl
     with DiagnosticableTreeMixin
     implements SplashReadyState {
-  const _$SplashReadyState();
+  const _$SplashReadyStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -365,9 +365,9 @@ class _$SplashReadyState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SplashReadyState);
+        (other.runtimeType == runtimeType && other is _$SplashReadyStateImpl);
   }
 
   @override
@@ -449,24 +449,24 @@ class _$SplashReadyState
 }
 
 abstract class SplashReadyState implements SplashState {
-  const factory SplashReadyState() = _$SplashReadyState;
+  const factory SplashReadyState() = _$SplashReadyStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SplashErrorStateCopyWith<$Res> {
-  factory _$$SplashErrorStateCopyWith(
-          _$SplashErrorState value, $Res Function(_$SplashErrorState) then) =
-      __$$SplashErrorStateCopyWithImpl<$Res>;
+abstract class _$$SplashErrorStateImplCopyWith<$Res> {
+  factory _$$SplashErrorStateImplCopyWith(_$SplashErrorStateImpl value,
+          $Res Function(_$SplashErrorStateImpl) then) =
+      __$$SplashErrorStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$SplashErrorStateCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$SplashErrorState>
-    implements _$$SplashErrorStateCopyWith<$Res> {
-  __$$SplashErrorStateCopyWithImpl(
-      _$SplashErrorState _value, $Res Function(_$SplashErrorState) _then)
+class __$$SplashErrorStateImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$SplashErrorStateImpl>
+    implements _$$SplashErrorStateImplCopyWith<$Res> {
+  __$$SplashErrorStateImplCopyWithImpl(_$SplashErrorStateImpl _value,
+      $Res Function(_$SplashErrorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -474,7 +474,7 @@ class __$$SplashErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$SplashErrorState(
+    return _then(_$SplashErrorStateImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -485,10 +485,10 @@ class __$$SplashErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SplashErrorState
+class _$SplashErrorStateImpl
     with DiagnosticableTreeMixin
     implements SplashErrorState {
-  const _$SplashErrorState(this.error);
+  const _$SplashErrorStateImpl(this.error);
 
   @override
   final String error;
@@ -507,10 +507,10 @@ class _$SplashErrorState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SplashErrorState &&
+            other is _$SplashErrorStateImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -520,8 +520,9 @@ class _$SplashErrorState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SplashErrorStateCopyWith<_$SplashErrorState> get copyWith =>
-      __$$SplashErrorStateCopyWithImpl<_$SplashErrorState>(this, _$identity);
+  _$$SplashErrorStateImplCopyWith<_$SplashErrorStateImpl> get copyWith =>
+      __$$SplashErrorStateImplCopyWithImpl<_$SplashErrorStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -599,10 +600,10 @@ class _$SplashErrorState
 }
 
 abstract class SplashErrorState implements SplashState {
-  const factory SplashErrorState(final String error) = _$SplashErrorState;
+  const factory SplashErrorState(final String error) = _$SplashErrorStateImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$SplashErrorStateCopyWith<_$SplashErrorState> get copyWith =>
+  _$$SplashErrorStateImplCopyWith<_$SplashErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
