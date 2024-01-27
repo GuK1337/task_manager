@@ -13,7 +13,7 @@ RUN npm install typescript -g
 COPY . .
 RUN npm run build
 # RUN npm run sync-db
-USER node
+#USER node
 CMD npm run sync-db && npm run dev
 
 FROM base as prod
@@ -25,5 +25,5 @@ RUN npm install typescript -g
 COPY . .
 RUN npm run build
 # RUN npm run sync-db
-USER node
+#USER node
 CMD npm run sync-db && npm start

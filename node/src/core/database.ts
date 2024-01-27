@@ -1,4 +1,3 @@
-import config from '../config';
 import * as fs from 'fs';
 import {
     Table,
@@ -6,11 +5,10 @@ import {
     Model,
     CreatedAt,
     UpdatedAt,
-    HasOne,
     Sequelize,
     HasMany,
     BelongsTo,
-    ForeignKey, NotNull, AllowNull, Unique, DataType, Default
+    ForeignKey, AllowNull, Unique, DataType, Default,
 } from "sequelize-typescript";
 
 const {
@@ -44,6 +42,12 @@ export class User extends Model {
     @AllowNull(false)
     @Column
     login!: string;
+
+    @Column
+    passwordHash!: string;
+
+    @Column
+    username!: string;
 
     @CreatedAt
     @Column

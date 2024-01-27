@@ -27,7 +27,7 @@ export const  checkAccess = async function (req: Request, res: Response<any ,Loc
             }
         }
 
-        if(req.originalUrl.includes('users/auth') || req.originalUrl.includes('images') ){
+        if(req.originalUrl.includes('users/auth') || req.originalUrl.includes('images') || req.originalUrl.includes('users/register')){
             next();
             return;
         }
