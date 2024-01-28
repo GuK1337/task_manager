@@ -69,17 +69,26 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                     height: AppInsets.padding16,
                   ),
                   FormBuilderImagePicker(
-                    placeholderWidget: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(AppInsets.inputBorderRadius),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          CupertinoIcons.camera,
-                          color: Theme.of(context)
-                              .extension<CustomThemeExtension>()!
-                              .labelColor,
+                    bottomSheetPadding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).padding.bottom),
+                    placeholderWidget: Align(
+                      alignment: Alignment.centerLeft,
+                      child: SizedBox(
+                        width: AppInsets.padding64,
+                        height: AppInsets.padding64,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppInsets.inputBorderRadius),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              CupertinoIcons.camera,
+                              color: Theme.of(context)
+                                  .extension<CustomThemeExtension>()!
+                                  .labelColor,
+                            ),
+                          ),
                         ),
                       ),
                     ),

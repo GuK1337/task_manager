@@ -63,15 +63,18 @@ class _GalleryPhotoViewWrapperState extends State<ImagePreviewScreen> {
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      body: PhotoViewGallery.builder(
-        scrollPhysics: const BouncingScrollPhysics(),
-        builder: _buildItem,
-        itemCount: widget.galleryItems.length,
-        loadingBuilder: widget.loadingBuilder,
-        backgroundDecoration: widget.backgroundDecoration,
-        pageController: widget.pageController,
-        onPageChanged: onPageChanged,
-        scrollDirection: widget.scrollDirection,
+      body: Container(
+        color: Colors.black,
+        child: PhotoViewGallery.builder(
+          scrollPhysics: const BouncingScrollPhysics(),
+          builder: _buildItem,
+          itemCount: widget.galleryItems.length,
+          loadingBuilder: widget.loadingBuilder,
+          backgroundDecoration: widget.backgroundDecoration,
+          pageController: widget.pageController,
+          onPageChanged: onPageChanged,
+          scrollDirection: widget.scrollDirection,
+        ),
       ),
     );
   }
