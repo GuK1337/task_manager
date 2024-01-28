@@ -10,12 +10,14 @@ _$NewTaskImpl _$$NewTaskImplFromJson(Map<String, dynamic> json) =>
     _$NewTaskImpl(
       title: json['title'] as String,
       description: json['description'] as String?,
-      imagePath: json['imagePath'] as String,
+      imagePaths: (json['imagePaths'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$NewTaskImplToJson(_$NewTaskImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
-      'imagePath': instance.imagePath,
+      'imagePaths': instance.imagePaths,
     };

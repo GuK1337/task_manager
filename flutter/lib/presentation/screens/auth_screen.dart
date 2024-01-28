@@ -44,6 +44,7 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                 ),
                 FormBuilderTextField(
                   name: _AuthFormKeys.login,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Логин',
                   ),
@@ -57,6 +58,7 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                 ),
                 FormBuilderTextField(
                   name: _AuthFormKeys.password,
+                  textInputAction: TextInputAction.next,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,

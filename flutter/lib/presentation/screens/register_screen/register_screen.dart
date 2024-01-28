@@ -48,6 +48,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                 ),
                 FormBuilderTextField(
                   name: _RegisterFormKeys.login,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Логин',
                   ),
@@ -61,6 +62,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                 ),
                 FormBuilderTextField(
                   name: _RegisterFormKeys.username,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Имя пользователя',
                   ),
@@ -77,6 +79,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   enableSuggestions: false,
                   autocorrect: false,
                   name: _RegisterFormKeys.password,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Пароль',
                   ),
@@ -94,6 +97,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   enableSuggestions: false,
                   autocorrect: false,
                   name: _RegisterFormKeys.password2,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     labelText: 'Повторите пароль',
                   ),

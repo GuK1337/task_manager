@@ -37,6 +37,10 @@ class AppRouter extends $AppRouter {
           initGuard,
           authGuard,
         ]),
+        AutoRoute(page: ImagePreviewRoute.page, guards: [
+          initGuard,
+          authGuard,
+        ]),
         AutoRoute(
           page: MainRoute.page,
           initial: true,

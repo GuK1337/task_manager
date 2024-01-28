@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/task/task.dart';
 import 'package:example_app/domain/bloc/task_info_cubit/task_info_cubit.dart';
+import 'package:example_app/presentation/router/app_router.gr.dart';
 import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/components/separated_widgets.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
@@ -46,29 +47,53 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
             return Column(
               children: [
                 Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.all(AppInsets.padding16),
-                    children: [
-                      Text(
-                        task.title,
-                        style: Theme.of(context).textTheme.headlineSmall,
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverPadding(
+                        padding: const EdgeInsets.all(AppInsets.padding16),
+                        sliver: SliverList.list(children: [
+                          Text(
+                            task.title,
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          const SizedBox(
+                            height: AppInsets.padding16,
+                          ),
+                          if (task.description != null) ...[
+                            Text(
+                              task.description!,
+                            ),
+                            const SizedBox(
+                              height: AppInsets.padding16,
+                            ),
+                          ],
+                        ]),
                       ),
-                      const SizedBox(
-                        height: AppInsets.padding16,
-                      ),
-                      if (task.description != null) ...[
-                        Text(
-                          task.description!,
-                        ),
-                        const SizedBox(
-                          height: AppInsets.padding16,
-                        ),
-                      ],
-                      if (task.image != null)
-                        CachedNetworkImage(
-                          imageUrl: task.image!,
-                          width: double.infinity,
-                        ),
+                      if (task.images?.isNotEmpty == true)
+                        SliverPadding(
+                          padding: const EdgeInsets.all(AppInsets.padding16)
+                              .copyWith(
+                            top: 0.0,
+                          ),
+                          sliver: SliverGrid.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 150,
+                              crossAxisSpacing: AppInsets.padding2,
+                              mainAxisSpacing: AppInsets.padding2,
+                              childAspectRatio: 1,
+                            ),
+                            itemBuilder: (context, index) => GestureDetector(
+                              onTap: () => open(context, task.images!, index),
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                imageUrl: task.images![index],
+                                width: double.infinity,
+                              ),
+                            ),
+                            itemCount: task.images!.length,
+                          ),
+                        )
                     ],
                   ),
                 ),
@@ -87,6 +112,15 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
             );
           },
         ),
+      ),
+    );
+  }
+
+  void open(BuildContext context, List<String> images, [int index = 0]) {
+    context.router.push(
+      ImagePreviewRoute(
+        galleryItems: images,
+        initialIndex: index,
       ),
     );
   }

@@ -8,18 +8,29 @@ part 'task.g.dart';
 class Task with _$Task {
   const factory Task({
     required int id,
-    required int creator,
-    int? executor,
+    required TaskUser creator,
+    TaskUser? executor,
     required DateTime createdAt,
     required DateTime updatedAt,
     required String title,
     String? description,
     required TaskStatus status,
-    String? image,
+    List<String>? images,
     @Default({}) Set<TaskActions> actions,
   }) = _Task;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
+}
+
+@freezed
+class TaskUser with _$TaskUser {
+  const factory TaskUser({
+    required int id,
+    required String username,
+  }) = _TaskUser;
+
+  factory TaskUser.fromJson(Map<String, dynamic> json) =>
+      _$TaskUserFromJson(json);
 }
 
 enum TaskStatus {

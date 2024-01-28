@@ -9,7 +9,7 @@ class NewTask with _$NewTask {
   const factory NewTask({
     required String title,
     String? description,
-    required String imagePath,
+    required List<String> imagePaths,
   }) = _NewTask;
 
   factory NewTask.fromJson(Map<String, dynamic> json) =>

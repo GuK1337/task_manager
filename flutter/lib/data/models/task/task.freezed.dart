@@ -21,14 +21,14 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Task {
   int get id => throw _privateConstructorUsedError;
-  int get creator => throw _privateConstructorUsedError;
-  int? get executor => throw _privateConstructorUsedError;
+  TaskUser get creator => throw _privateConstructorUsedError;
+  TaskUser? get executor => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   TaskStatus get status => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
   Set<TaskActions> get actions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,15 +43,18 @@ abstract class $TaskCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      int creator,
-      int? executor,
+      TaskUser creator,
+      TaskUser? executor,
       DateTime createdAt,
       DateTime updatedAt,
       String title,
       String? description,
       TaskStatus status,
-      String? image,
+      List<String>? images,
       Set<TaskActions> actions});
+
+  $TaskUserCopyWith<$Res> get creator;
+  $TaskUserCopyWith<$Res>? get executor;
 }
 
 /// @nodoc
@@ -75,7 +78,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? title = null,
     Object? description = freezed,
     Object? status = null,
-    Object? image = freezed,
+    Object? images = freezed,
     Object? actions = null,
   }) {
     return _then(_value.copyWith(
@@ -86,11 +89,11 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
       creator: null == creator
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
-              as int,
+              as TaskUser,
       executor: freezed == executor
           ? _value.executor
           : executor // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as TaskUser?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -111,15 +114,35 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as TaskStatus,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       actions: null == actions
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
               as Set<TaskActions>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TaskUserCopyWith<$Res> get creator {
+    return $TaskUserCopyWith<$Res>(_value.creator, (value) {
+      return _then(_value.copyWith(creator: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TaskUserCopyWith<$Res>? get executor {
+    if (_value.executor == null) {
+      return null;
+    }
+
+    return $TaskUserCopyWith<$Res>(_value.executor!, (value) {
+      return _then(_value.copyWith(executor: value) as $Val);
+    });
   }
 }
 
@@ -132,15 +155,20 @@ abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      int creator,
-      int? executor,
+      TaskUser creator,
+      TaskUser? executor,
       DateTime createdAt,
       DateTime updatedAt,
       String title,
       String? description,
       TaskStatus status,
-      String? image,
+      List<String>? images,
       Set<TaskActions> actions});
+
+  @override
+  $TaskUserCopyWith<$Res> get creator;
+  @override
+  $TaskUserCopyWith<$Res>? get executor;
 }
 
 /// @nodoc
@@ -161,7 +189,7 @@ class __$$TaskImplCopyWithImpl<$Res>
     Object? title = null,
     Object? description = freezed,
     Object? status = null,
-    Object? image = freezed,
+    Object? images = freezed,
     Object? actions = null,
   }) {
     return _then(_$TaskImpl(
@@ -172,11 +200,11 @@ class __$$TaskImplCopyWithImpl<$Res>
       creator: null == creator
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
-              as int,
+              as TaskUser,
       executor: freezed == executor
           ? _value.executor
           : executor // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as TaskUser?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -197,10 +225,10 @@ class __$$TaskImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as TaskStatus,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       actions: null == actions
           ? _value._actions
           : actions // ignore: cast_nullable_to_non_nullable
@@ -221,9 +249,10 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
       required this.title,
       this.description,
       required this.status,
-      this.image,
+      final List<String>? images,
       final Set<TaskActions> actions = const {}})
-      : _actions = actions;
+      : _images = images,
+        _actions = actions;
 
   factory _$TaskImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaskImplFromJson(json);
@@ -231,9 +260,9 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
   @override
   final int id;
   @override
-  final int creator;
+  final TaskUser creator;
   @override
-  final int? executor;
+  final TaskUser? executor;
   @override
   final DateTime createdAt;
   @override
@@ -244,8 +273,16 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
   final String? description;
   @override
   final TaskStatus status;
+  final List<String>? _images;
   @override
-  final String? image;
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final Set<TaskActions> _actions;
   @override
   @JsonKey()
@@ -257,7 +294,7 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Task(id: $id, creator: $creator, executor: $executor, createdAt: $createdAt, updatedAt: $updatedAt, title: $title, description: $description, status: $status, image: $image, actions: $actions)';
+    return 'Task(id: $id, creator: $creator, executor: $executor, createdAt: $createdAt, updatedAt: $updatedAt, title: $title, description: $description, status: $status, images: $images, actions: $actions)';
   }
 
   @override
@@ -273,7 +310,7 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('image', image))
+      ..add(DiagnosticsProperty('images', images))
       ..add(DiagnosticsProperty('actions', actions));
   }
 
@@ -294,7 +331,7 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other._actions, _actions));
   }
 
@@ -310,7 +347,7 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
       title,
       description,
       status,
-      image,
+      const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_actions));
 
   @JsonKey(ignore: true)
@@ -330,14 +367,14 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
 abstract class _Task implements Task {
   const factory _Task(
       {required final int id,
-      required final int creator,
-      final int? executor,
+      required final TaskUser creator,
+      final TaskUser? executor,
       required final DateTime createdAt,
       required final DateTime updatedAt,
       required final String title,
       final String? description,
       required final TaskStatus status,
-      final String? image,
+      final List<String>? images,
       final Set<TaskActions> actions}) = _$TaskImpl;
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
@@ -345,9 +382,9 @@ abstract class _Task implements Task {
   @override
   int get id;
   @override
-  int get creator;
+  TaskUser get creator;
   @override
-  int? get executor;
+  TaskUser? get executor;
   @override
   DateTime get createdAt;
   @override
@@ -359,11 +396,173 @@ abstract class _Task implements Task {
   @override
   TaskStatus get status;
   @override
-  String? get image;
+  List<String>? get images;
   @override
   Set<TaskActions> get actions;
   @override
   @JsonKey(ignore: true)
   _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TaskUser _$TaskUserFromJson(Map<String, dynamic> json) {
+  return _TaskUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TaskUser {
+  int get id => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TaskUserCopyWith<TaskUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TaskUserCopyWith<$Res> {
+  factory $TaskUserCopyWith(TaskUser value, $Res Function(TaskUser) then) =
+      _$TaskUserCopyWithImpl<$Res, TaskUser>;
+  @useResult
+  $Res call({int id, String username});
+}
+
+/// @nodoc
+class _$TaskUserCopyWithImpl<$Res, $Val extends TaskUser>
+    implements $TaskUserCopyWith<$Res> {
+  _$TaskUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? username = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TaskUserImplCopyWith<$Res>
+    implements $TaskUserCopyWith<$Res> {
+  factory _$$TaskUserImplCopyWith(
+          _$TaskUserImpl value, $Res Function(_$TaskUserImpl) then) =
+      __$$TaskUserImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String username});
+}
+
+/// @nodoc
+class __$$TaskUserImplCopyWithImpl<$Res>
+    extends _$TaskUserCopyWithImpl<$Res, _$TaskUserImpl>
+    implements _$$TaskUserImplCopyWith<$Res> {
+  __$$TaskUserImplCopyWithImpl(
+      _$TaskUserImpl _value, $Res Function(_$TaskUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? username = null,
+  }) {
+    return _then(_$TaskUserImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TaskUserImpl with DiagnosticableTreeMixin implements _TaskUser {
+  const _$TaskUserImpl({required this.id, required this.username});
+
+  factory _$TaskUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaskUserImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String username;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TaskUser(id: $id, username: $username)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TaskUser'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('username', username));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TaskUserImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.username, username) ||
+                other.username == username));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, username);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TaskUserImplCopyWith<_$TaskUserImpl> get copyWith =>
+      __$$TaskUserImplCopyWithImpl<_$TaskUserImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TaskUserImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TaskUser implements TaskUser {
+  const factory _TaskUser(
+      {required final int id, required final String username}) = _$TaskUserImpl;
+
+  factory _TaskUser.fromJson(Map<String, dynamic> json) =
+      _$TaskUserImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get username;
+  @override
+  @JsonKey(ignore: true)
+  _$$TaskUserImplCopyWith<_$TaskUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -113,14 +113,23 @@ class ApiServiceImpl extends ApiService {
   Future<DefaultResponse<int>> createTask(
       {required String token, required NewTask newTask}) async {
     try {
-      final name = basename(newTask.imagePath);
-      String mimeType = mime(name)!;
-      String mimee = mimeType.split('/')[0];
-      String type = mimeType.split('/')[1];
+      final images = [];
+      for (final imagePath in newTask.imagePaths) {
+        final name = basename(imagePath);
+        String mimeType = mime(name)!;
+        String mimee = mimeType.split('/')[0];
+        String type = mimeType.split('/')[1];
+        images.add(
+          await MultipartFile.fromFile(
+            imagePath,
+            filename: name,
+            contentType: MediaType(mimee, type),
+          ),
+        );
+      }
 
       FormData formData = FormData.fromMap({
-        'image': await MultipartFile.fromFile(newTask.imagePath,
-            filename: name, contentType: MediaType(mimee, type)),
+        'images': images,
         'description': newTask.description ?? '',
         'title': newTask.title,
       });

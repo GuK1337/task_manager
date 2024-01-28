@@ -36,6 +36,8 @@ abstract class DioClientModule {
           }
           return null;
         },
+        retryStatusCodes: DioErrorHandlerImpl.retryStatusCodesWithoutBadReq,
+        undefinedErrorCodes: [],
       );
 }
 

@@ -2,8 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/new_task/new_task.dart';
 import 'package:example_app/domain/bloc/create_new_task_cubit/create_new_task_cubit.dart';
 import 'package:example_app/presentation/theme/models/app_insets.dart';
+import 'package:example_app/presentation/theme/models/colors/app_colors.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
 import 'package:example_app/utils/sr_bloc/sr_bloc_builder.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -67,15 +69,48 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                     height: AppInsets.padding16,
                   ),
                   FormBuilderImagePicker(
-                    name: _TaskFormKeys._image,
-                    previewAutoSizeWidth: true,
-                    decoration: const InputDecoration(
-                      labelText: "Изображение",
+                    placeholderWidget: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(AppInsets.inputBorderRadius),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          CupertinoIcons.camera,
+                          color: Theme.of(context)
+                              .extension<CustomThemeExtension>()!
+                              .labelColor,
+                        ),
+                      ),
                     ),
-                    maxImages: 1,
+                    previewHeight: AppInsets.padding64,
+                    previewWidth: AppInsets.padding64 + AppInsets.padding8,
+                    previewMargin:
+                        const EdgeInsets.only(right: AppInsets.padding8),
+                    name: _TaskFormKeys._image,
+                    previewAutoSizeWidth: false,
+                    transformImageWidget: (context, image) {
+                      return SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              AppInsets.inputBorderRadius,
+                            ),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: image,
+                        ),
+                      );
+                    },
+                    decoration: const InputDecoration(
+                      labelText: "Добавьте до 10 изображений",
+                      contentPadding: EdgeInsets.all(AppInsets.padding8),
+                    ),
+                    maxImages: 10,
                     cameraLabel: const Text('Камера'),
                     galleryLabel: const Text('Галерея'),
-                    validator: FormBuilderValidators.required(),
                   )
                 ],
               )),
@@ -109,10 +144,10 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                                     title: value[_TaskFormKeys._title],
                                     description:
                                         value[_TaskFormKeys._description],
-                                    imagePath: ((value[_TaskFormKeys._image]
-                                                as Iterable)
-                                            .first as XFile)
-                                        .path,
+                                    imagePaths: ((value[_TaskFormKeys._image]
+                                            as Iterable))
+                                        .map((e) => (e as XFile).path)
+                                        .toList(),
                                   ),
                                 );
                           }

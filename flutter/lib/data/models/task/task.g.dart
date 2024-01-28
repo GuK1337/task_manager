@@ -8,14 +8,17 @@ part of 'task.dart';
 
 _$TaskImpl _$$TaskImplFromJson(Map<String, dynamic> json) => _$TaskImpl(
       id: json['id'] as int,
-      creator: json['creator'] as int,
-      executor: json['executor'] as int?,
+      creator: TaskUser.fromJson(json['creator'] as Map<String, dynamic>),
+      executor: json['executor'] == null
+          ? null
+          : TaskUser.fromJson(json['executor'] as Map<String, dynamic>),
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       title: json['title'] as String,
       description: json['description'] as String?,
       status: $enumDecode(_$TaskStatusEnumMap, json['status']),
-      image: json['image'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       actions: (json['actions'] as List<dynamic>?)
               ?.map((e) => $enumDecode(_$TaskActionsEnumMap, e))
               .toSet() ??
@@ -25,14 +28,14 @@ _$TaskImpl _$$TaskImplFromJson(Map<String, dynamic> json) => _$TaskImpl(
 Map<String, dynamic> _$$TaskImplToJson(_$TaskImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'creator': instance.creator,
-      'executor': instance.executor,
+      'creator': instance.creator.toJson(),
+      'executor': instance.executor?.toJson(),
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
       'title': instance.title,
       'description': instance.description,
       'status': _$TaskStatusEnumMap[instance.status]!,
-      'image': instance.image,
+      'images': instance.images,
       'actions': instance.actions.map((e) => _$TaskActionsEnumMap[e]!).toList(),
     };
 
@@ -48,3 +51,15 @@ const _$TaskActionsEnumMap = {
   TaskActions.confirm: 'confirm',
   TaskActions.cancel: 'cancel',
 };
+
+_$TaskUserImpl _$$TaskUserImplFromJson(Map<String, dynamic> json) =>
+    _$TaskUserImpl(
+      id: json['id'] as int,
+      username: json['username'] as String,
+    );
+
+Map<String, dynamic> _$$TaskUserImplToJson(_$TaskUserImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'username': instance.username,
+    };

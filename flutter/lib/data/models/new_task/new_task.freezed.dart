@@ -22,7 +22,7 @@ NewTask _$NewTaskFromJson(Map<String, dynamic> json) {
 mixin _$NewTask {
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String get imagePath => throw _privateConstructorUsedError;
+  List<String> get imagePaths => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $NewTaskCopyWith<$Res> {
   factory $NewTaskCopyWith(NewTask value, $Res Function(NewTask) then) =
       _$NewTaskCopyWithImpl<$Res, NewTask>;
   @useResult
-  $Res call({String title, String? description, String imagePath});
+  $Res call({String title, String? description, List<String> imagePaths});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$NewTaskCopyWithImpl<$Res, $Val extends NewTask>
   $Res call({
     Object? title = null,
     Object? description = freezed,
-    Object? imagePath = null,
+    Object? imagePaths = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -63,10 +63,10 @@ class _$NewTaskCopyWithImpl<$Res, $Val extends NewTask>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      imagePath: null == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String,
+      imagePaths: null == imagePaths
+          ? _value.imagePaths
+          : imagePaths // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$NewTaskImplCopyWith<$Res> implements $NewTaskCopyWith<$Res> {
       __$$NewTaskImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String? description, String imagePath});
+  $Res call({String title, String? description, List<String> imagePaths});
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class __$$NewTaskImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? description = freezed,
-    Object? imagePath = null,
+    Object? imagePaths = null,
   }) {
     return _then(_$NewTaskImpl(
       title: null == title
@@ -105,10 +105,10 @@ class __$$NewTaskImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      imagePath: null == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String,
+      imagePaths: null == imagePaths
+          ? _value._imagePaths
+          : imagePaths // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -117,7 +117,10 @@ class __$$NewTaskImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
   const _$NewTaskImpl(
-      {required this.title, this.description, required this.imagePath});
+      {required this.title,
+      this.description,
+      required final List<String> imagePaths})
+      : _imagePaths = imagePaths;
 
   factory _$NewTaskImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewTaskImplFromJson(json);
@@ -126,12 +129,17 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
   final String title;
   @override
   final String? description;
+  final List<String> _imagePaths;
   @override
-  final String imagePath;
+  List<String> get imagePaths {
+    if (_imagePaths is EqualUnmodifiableListView) return _imagePaths;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imagePaths);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NewTask(title: $title, description: $description, imagePath: $imagePath)';
+    return 'NewTask(title: $title, description: $description, imagePaths: $imagePaths)';
   }
 
   @override
@@ -141,7 +149,7 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
       ..add(DiagnosticsProperty('type', 'NewTask'))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('imagePath', imagePath));
+      ..add(DiagnosticsProperty('imagePaths', imagePaths));
   }
 
   @override
@@ -152,13 +160,14 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath));
+            const DeepCollectionEquality()
+                .equals(other._imagePaths, _imagePaths));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, imagePath);
+  int get hashCode => Object.hash(runtimeType, title, description,
+      const DeepCollectionEquality().hash(_imagePaths));
 
   @JsonKey(ignore: true)
   @override
@@ -178,7 +187,7 @@ abstract class _NewTask implements NewTask {
   const factory _NewTask(
       {required final String title,
       final String? description,
-      required final String imagePath}) = _$NewTaskImpl;
+      required final List<String> imagePaths}) = _$NewTaskImpl;
 
   factory _NewTask.fromJson(Map<String, dynamic> json) = _$NewTaskImpl.fromJson;
 
@@ -187,7 +196,7 @@ abstract class _NewTask implements NewTask {
   @override
   String? get description;
   @override
-  String get imagePath;
+  List<String> get imagePaths;
   @override
   @JsonKey(ignore: true)
   _$$NewTaskImplCopyWith<_$NewTaskImpl> get copyWith =>
