@@ -8,8 +8,10 @@ import {
     Sequelize,
     HasMany,
     BelongsTo,
+    HasOne,
     ForeignKey, AllowNull, Unique, DataType, Default,
 } from "sequelize-typescript";
+import {NonAttribute} from "sequelize";
 
 const {
     POSTGRES_HOST: HOST,
@@ -41,27 +43,27 @@ export class User extends Model {
     @Unique
     @AllowNull(false)
     @Column
-    login!: string;
+    declare login: string;
 
     @Column
-    passwordHash!: string;
+    declare passwordHash: string;
 
     @Column
-    username!: string;
+    declare username: string;
 
     @CreatedAt
     @Column
-    createdAt!: Date;
+    declare createdAt: Date;
 
     @UpdatedAt
     @Column
-    updatedAt!: Date;
+    declare updatedAt: Date;
 
     @HasMany(() => Task, "creatorId")
-    createdTasks!: Task[];
+    declare createdTasks: Task[];
 
     @HasMany(() => Task, "executorId")
-    executedTasks!: Task[];
+    declare executedTasks: Task[];
 }
 
 export enum TaskStatus{
@@ -73,46 +75,78 @@ export enum TaskStatus{
 export class Task extends Model {
     @CreatedAt
     @Column
-    createdAt!: Date;
+    declare createdAt: Date;
 
     @UpdatedAt
     @Column
-    updatedAt!: Date;
+    declare updatedAt: Date;
 
     @ForeignKey(() => User)
     @Column
-    creatorId!: number;
+    declare creatorId: number;
 
     @BelongsTo(() => User, "creatorId")
-    creator!: User;
+    declare creator: User;
 
     @ForeignKey(() => User)
     @Column(DataType.INTEGER)
-    executorId?: number | null | undefined;
+    declare executorId: number | null | undefined;
 
     @BelongsTo(() => User, "executorId")
-    executor?: User;
+    declare executor: User | null | undefined;
 
     @AllowNull(false)
     @Column
-    title!: string;
+    declare title: string;
 
     @AllowNull(false)
     @Column(DataType.TEXT)
-    description!: string;
+    declare description: string;
 
     @Column(DataType.ARRAY(DataType.STRING))
-    images!: string[];
+    declare images: string[];
 
     @Default('new')
     @AllowNull(false)
     @Column(DataType.ENUM(TaskStatus.new, TaskStatus.inProgress, TaskStatus.completed))
-    status!: string;
+    declare status: string;
 
+    @HasOne(() => TaskResult, {
+        foreignKey: 'taskId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+    })
+    declare result?: NonAttribute<TaskResult>;
+}
+
+@Table
+export class TaskResult extends Model {
+    @CreatedAt
+    @Column
+    declare createdAt: Date;
+
+    @UpdatedAt
+    @Column
+    declare updatedAt: Date;
+
+    @AllowNull(false)
+    @Column(DataType.TEXT)
+    declare description: string;
+
+    @Column(DataType.ARRAY(DataType.STRING))
+    declare images: string[];
+
+    @AllowNull(false)
+    @ForeignKey(() => Task)
+    @Column
+    declare taskId: number;
+
+    @BelongsTo(() => Task, "taskId")
+    declare task: Task;
 }
 
 
-sequelize.addModels([User, Task]);
+sequelize.addModels([User,TaskResult, Task,]);
 
 export default sequelize;
 module.exports.sequelize = sequelize;

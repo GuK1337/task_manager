@@ -1,9 +1,8 @@
-import {Request, Response, NextFunction, Router} from 'express';
-import {Task, User, TaskStatus} from "../core/database";
+import {NextFunction, Request, Response, Router} from 'express';
+import {Task, TaskResult, TaskStatus, User} from "../core/database";
 import {DefaultResponse, Locals} from "../types/response";
 import multer from "multer";
 import config from "../config";
-import {AllowNull, BelongsTo, Column, CreatedAt, DataType, Default, UpdatedAt} from "sequelize-typescript";
 import {Op} from "sequelize";
 import {v4} from "uuid";
 import path from "path";
@@ -15,6 +14,12 @@ const imageTypes = [
     '.svg',
     '.gif'
 ];
+
+interface ConfirmTaskRequest extends  Request{
+    body: {
+        description: string | undefined,
+    }
+}
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,15 +34,11 @@ const upload = multer({storage: storage})
 
 const router = Router();
 
-/* GET users listing. */
-router.post('/create', upload.array("images"), async function(req:Request, res:Response<DefaultResponse<number> ,Locals>, next:NextFunction) {
-    try{
-        if(!res.locals.user){
-            throw Error('Unauthorized');
-        }
-        const images:string[] = [];
-        if(req.files && Array.isArray(req.files)){
-            for (const file of req.files!){
+function getImagesFromFiles (files:  {[p: string]: Express.Multer.File[]} | Express.Multer.File[]): string[]{
+    const images:string[] = [];
+    if(files){
+        if(Array.isArray(files)){
+            for (const file of files){
                 const ext = path.extname(file.originalname);
                 if (!file || !imageTypes.find(imageType => ext === imageType)) {
                     continue;
@@ -45,9 +46,33 @@ router.post('/create', upload.array("images"), async function(req:Request, res:R
                 images.push(file.filename)
             }
         }
+        else {
+            for (const key in files){
+                const list:Express.Multer.File[] = files[key];
+                for (const file of list){
+                    const ext = path.extname(file.originalname);
+                    if (!file || !imageTypes.find(imageType => ext === imageType)) {
+                        continue;
+                    }
+                    images.push(file.filename)
+                }
+
+            }
+        }
+
+    }
+    return  images;
+}
+
+/* GET users listing. */
+router.post('/create', upload.array("images"), async function(req:Request, res:Response<DefaultResponse<number> ,Locals>, next:NextFunction) {
+    try{
+        if(!res.locals.user){
+            throw Error('Unauthorized');
+        }
         const user = await User!.findByPk(res.locals.user!.id);
         const task = await Task.create({
-            images: images,
+            images: req.files ? getImagesFromFiles(req.files): undefined,
             title: req.body.title,
             description: req.body.description,
             creatorId: user?.id,
@@ -120,11 +145,25 @@ interface TaskInfo {
     actions: TaskActions[];
 
     id: number;
+
+    result?: TaskResultData;
 }
 
 interface TaskUser{
     username: string;
     id: string;
+}
+
+interface TaskResultData{
+    id: number,
+
+    description: string;
+
+    images: string[];
+
+    createdAt: string;
+
+    updatedAt: string;
 }
 
 // router.delete('/info/:id', async function(req:Request, res:Response<DefaultResponse<TaskInfo> ,Locals>, next:NextFunction) {
@@ -200,11 +239,12 @@ router.patch('/accept/:id', async function(req:Request, res:Response<DefaultResp
     }
 });
 
-router.patch('/confirm/:id', async function(req:Request, res:Response<DefaultResponse<TaskInfo> ,Locals>, next:NextFunction) {
+router.patch('/confirm/:id', upload.array("images"), async function(req:ConfirmTaskRequest, res:Response<DefaultResponse<TaskInfo> ,Locals>, next:NextFunction) {
     try{
         if(!res.locals.user){
             throw Error('Unauthorized');
         }
+        console.log(1);
         const task = await Task.findOne({
             where: {
                 executorId: res.locals.user.id,
@@ -224,6 +264,15 @@ router.patch('/confirm/:id', async function(req:Request, res:Response<DefaultRes
         }
         task.status = TaskStatus.completed;
         await task.save();
+        if(req.files || req.body.description){
+
+            task.result = await TaskResult.create({
+                taskId: task.id,
+                description: req.body.description,
+                images: req.files ? getImagesFromFiles(req.files) : undefined,
+            });
+        }
+
         return res.send({
             code: 0,
             result: mapTask(task, res.locals.user!),
@@ -282,6 +331,7 @@ router.get('/list/new', async function(req:Request, res:Response<DefaultResponse
         if(!res.locals.user){
             throw Error('Unauthorized');
         }
+
         const tasks = await Task.findAll(
             {
                 where: {
@@ -289,6 +339,9 @@ router.get('/list/new', async function(req:Request, res:Response<DefaultResponse
                     status: TaskStatus.new,
                 },
                 include: [{ all: true }],
+                order: [
+                    ['updatedAt', 'DESC'],
+                ],
             }
         );
         if(!tasks){
@@ -327,6 +380,9 @@ router.get('/list/in-progress', async function(req:Request, res:Response<Default
                     status: TaskStatus.inProgress,
                 },
                 include: [{ all: true }],
+                order: [
+                    ['updatedAt', 'DESC'],
+                ],
             }
         );
 
@@ -367,6 +423,9 @@ router.get('/list/instructed', async function(req:Request, res:Response<DefaultR
                     status: TaskStatus.inProgress,
                 },
                 include: [{ all: true }],
+                order: [
+                    ['updatedAt', 'DESC'],
+                ],
             }
         );
 
@@ -414,9 +473,11 @@ router.get('/list/archive', async function(req:Request, res:Response<DefaultResp
 
                 },
                 include: [{ all: true }],
+                order: [
+                    ['updatedAt', 'DESC'],
+                ],
             }
         );
-
         if(!tasks){
             res.status(404);
             res.send({
@@ -459,6 +520,13 @@ function mapTask(task:Task, user: User):TaskInfo{
         status: task.status,
         images: task.images.map((image) => getImageUrl(image)) ,
         id: task.id,
+        result: task.result ? {
+            id: task.result.id,
+            description: task.result.description,
+            createdAt: task.result.createdAt.toISOString(),
+            updatedAt: task.result.updatedAt.toISOString(),
+            images: task.result.images.map((image) => getImageUrl(image)),
+        } : undefined,
     };
 }
 
