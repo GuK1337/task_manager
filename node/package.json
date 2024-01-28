@@ -6,7 +6,8 @@
     "build": "npx tsc",
     "start": "node ./bin/www",
     "sync-db": "node dist/syncronizeDb.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./bin/www\""
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q ./bin/www\"",
+    "dev2": "npx tsc --watch"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",

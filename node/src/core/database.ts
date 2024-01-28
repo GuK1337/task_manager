@@ -83,14 +83,14 @@ export class Task extends Model {
     @Column
     creatorId!: number;
 
-    @BelongsTo(() => Task, "creatorId")
+    @BelongsTo(() => User, "creatorId")
     creator!: User;
 
     @ForeignKey(() => User)
     @Column(DataType.INTEGER)
     executorId?: number | null | undefined;
 
-    @BelongsTo(() => Task, "executorId")
+    @BelongsTo(() => User, "executorId")
     executor?: User;
 
     @AllowNull(false)
@@ -101,8 +101,8 @@ export class Task extends Model {
     @Column(DataType.TEXT)
     description!: string;
 
-    @Column
-    image!: string;
+    @Column(DataType.ARRAY(DataType.STRING))
+    images!: string[];
 
     @Default('new')
     @AllowNull(false)
