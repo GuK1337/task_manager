@@ -4,6 +4,7 @@ import { User } from "../core/database";
 import config from '../config';
 import {DefaultResponse, Locals} from "../types/response";
 import * as bcrypt from  "bcryptjs";
+import {Op, WhereOptions} from "sequelize";
 
 const router = Router();
 
@@ -13,10 +14,17 @@ interface AuthResponseBody{
   id: number,
 }
 
-interface InfoResponseBody{
-  login: string,
+interface ShortInfoResponseBody{
   id: number,
+  username: string,
 }
+
+interface InfoResponseBody extends  ShortInfoResponseBody{
+  login: string,
+}
+
+
+
 
 interface RegisterReuest extends Request{
   body:{
@@ -110,12 +118,49 @@ router.get('/info', async function(req:Request, res:Response<DefaultResponse<Inf
       });
       return;
     }
-    const result = {id: user.id, login: user.login };
+    const result = {
+      id: user.id,
+      login: user.login ,
+      username: user.username,
+    };
 
     await user!.save();
     return res.send({
       code: 0,
       result: result,
+    });
+  }
+  catch (e:any){
+    res.status(500);
+    res.send({
+      code: 500,
+      message: e.toString(),
+    });
+  }
+});
+
+router.get('/list', async function(req:Request, res:Response<DefaultResponse<ShortInfoResponseBody[]> ,Locals>) {
+  try{
+    const query:WhereOptions = {
+      id: {
+        [Op.not]: res.locals.user?.id
+      }
+    }
+    if(req.query.query){
+      query.username = {
+        [Op.substring]: req.query.query
+      };
+    }
+    const users = await User!.findAll({
+      where: query
+    });
+
+    return res.send({
+      code: 0,
+      result: users.map((e) => ({
+        id: e.id,
+        username: e.username,
+      })),
     });
   }
   catch (e:any){

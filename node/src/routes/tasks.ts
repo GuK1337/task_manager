@@ -64,18 +64,20 @@ function getImagesFromFiles (files:  {[p: string]: Express.Multer.File[]} | Expr
     return  images;
 }
 
-/* GET users listing. */
 router.post('/create', upload.array("images"), async function(req:Request, res:Response<DefaultResponse<number> ,Locals>, next:NextFunction) {
     try{
         if(!res.locals.user){
             throw Error('Unauthorized');
         }
         const user = await User!.findByPk(res.locals.user!.id);
+        console.log(req.body);
         const task = await Task.create({
             images: req.files ? getImagesFromFiles(req.files): undefined,
             title: req.body.title,
             description: req.body.description,
             creatorId: user?.id,
+            executorId: req.body.executorId || undefined,
+            status: req.body.executorId ? TaskStatus.inProgress :  TaskStatus.new,
         });
         return res.send({
             code: 0,
