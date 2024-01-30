@@ -23,6 +23,9 @@ _$TaskImpl _$$TaskImplFromJson(Map<String, dynamic> json) => _$TaskImpl(
               ?.map((e) => $enumDecode(_$TaskActionsEnumMap, e))
               .toSet() ??
           const {},
+      result: json['result'] == null
+          ? null
+          : TaskResult.fromJson(json['result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TaskImplToJson(_$TaskImpl instance) =>
@@ -37,6 +40,7 @@ Map<String, dynamic> _$$TaskImplToJson(_$TaskImpl instance) =>
       'status': _$TaskStatusEnumMap[instance.status]!,
       'images': instance.images,
       'actions': instance.actions.map((e) => _$TaskActionsEnumMap[e]!).toList(),
+      'result': instance.result?.toJson(),
     };
 
 const _$TaskStatusEnumMap = {
@@ -51,6 +55,21 @@ const _$TaskActionsEnumMap = {
   TaskActions.confirm: 'confirm',
   TaskActions.cancel: 'cancel',
 };
+
+_$TaskResultImpl _$$TaskResultImplFromJson(Map<String, dynamic> json) =>
+    _$TaskResultImpl(
+      id: json['id'] as int,
+      description: json['description'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$TaskResultImplToJson(_$TaskResultImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'description': instance.description,
+      'images': instance.images,
+    };
 
 _$TaskUserImpl _$$TaskUserImplFromJson(Map<String, dynamic> json) =>
     _$TaskUserImpl(

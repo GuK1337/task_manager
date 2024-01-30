@@ -4,6 +4,7 @@ import 'package:example_app/domain/bloc/task_info_cubit/task_info_cubit.dart';
 import 'package:example_app/presentation/router/app_router.gr.dart';
 import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/components/separated_widgets.dart';
+import 'package:example_app/presentation/theme/models/colors/app_colors.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
 import 'package:example_app/utils/sr_bloc/sr_bloc_builder.dart';
 import 'package:flutter/material.dart';
@@ -53,8 +54,41 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                         padding: const EdgeInsets.all(AppInsets.padding16),
                         sliver: SliverList.list(children: [
                           Text(
+                            "Автор",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Theme.of(context)
+                                      .extension<CustomThemeExtension>()!
+                                      .labelColor,
+                                ),
+                          ),
+                          const SizedBox(
+                            height: AppInsets.padding8,
+                          ),
+                          Text(task.creator.username,
+                              style: Theme.of(context).textTheme.titleMedium),
+                          const SizedBox(
+                            height: AppInsets.padding24,
+                          ),
+                          Text(
+                            "Содержание",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Theme.of(context)
+                                      .extension<CustomThemeExtension>()!
+                                      .labelColor,
+                                ),
+                          ),
+                          const SizedBox(
+                            height: AppInsets.padding8,
+                          ),
+                          Text(
                             task.title,
-                            style: Theme.of(context).textTheme.headlineSmall,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                           const SizedBox(
                             height: AppInsets.padding16,
@@ -93,14 +127,91 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                             ),
                             itemCount: task.images!.length,
                           ),
+                        ),
+                      if (task.result != null)
+                        SliverPadding(
+                          padding: const EdgeInsets.all(AppInsets.padding16)
+                              .copyWith(
+                            top: AppInsets.padding24,
+                            bottom: AppInsets.padding8,
+                          ),
+                          sliver: SliverList.list(children: [
+                            Text(
+                              "Исполнитель",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .extension<CustomThemeExtension>()!
+                                        .labelColor,
+                                  ),
+                            ),
+                            const SizedBox(
+                              height: AppInsets.padding8,
+                            ),
+                            Text(
+                              task.executor?.username ?? '',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            const SizedBox(
+                              height: AppInsets.padding24,
+                            ),
+                            Text(
+                              'Результат выполнения',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .extension<CustomThemeExtension>()!
+                                        .labelColor,
+                                  ),
+                            ),
+                            if (task.result!.description != null &&
+                                task.result!.description!.isNotEmpty) ...[
+                              const SizedBox(
+                                height: AppInsets.padding8,
+                              ),
+                              Text(
+                                task.result!.description!,
+                              ),
+                              const SizedBox(
+                                height: AppInsets.padding8,
+                              ),
+                            ],
+                          ]),
+                        ),
+                      if (task.result?.images?.isNotEmpty == true)
+                        SliverPadding(
+                          padding: const EdgeInsets.all(AppInsets.padding16)
+                              .copyWith(
+                            top: 0.0,
+                          ),
+                          sliver: SliverGrid.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 150,
+                              crossAxisSpacing: AppInsets.padding2,
+                              mainAxisSpacing: AppInsets.padding2,
+                              childAspectRatio: 1,
+                            ),
+                            itemBuilder: (context, index) => GestureDetector(
+                              onTap: () =>
+                                  open(context, task.result!.images!, index),
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                imageUrl: task.result!.images![index],
+                                width: double.infinity,
+                              ),
+                            ),
+                            itemCount: task.result!.images!.length,
+                          ),
                         )
                     ],
                   ),
                 ),
                 if (task.actions.isNotEmpty) ...[
-                  const Divider(
-                    height: 1.0,
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(AppInsets.padding16),
                     child: ButtonWidget(
@@ -180,7 +291,17 @@ class ButtonWidget extends StatelessWidget {
             backgroundColor: Colors.green.shade700,
             foregroundColor: Colors.white,
           ),
-          onPressed: () => context.read<TaskInfoCubit>().confirm(),
+          onPressed: () => context.router.push(
+            AddTaskResultRoute(
+              onConfirm: (String? description, List<String>? images) {
+                context.router.pop();
+                context.read<TaskInfoCubit>().confirm(
+                      resultDescription: description,
+                      imagePaths: images,
+                    );
+              },
+            ),
+          ),
           child: const Text('Выполнить'),
         );
       case TaskActions.cancel:

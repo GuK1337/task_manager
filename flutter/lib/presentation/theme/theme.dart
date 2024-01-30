@@ -30,7 +30,7 @@ abstract class MainTheme {
     );
 
     return ThemeData(
-      fontFamily: AppFonts.inter,
+      fontFamily: AppFonts.gothamPro,
       dialogBackgroundColor: appColors.secondaryBackground,
       dialogTheme: DialogTheme(
         backgroundColor: appColors.secondaryBackground,
@@ -39,7 +39,7 @@ abstract class MainTheme {
         displayLarge: TextStyle(
           color: appColors.textColor,
           fontSize: 60,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.17,
           letterSpacing: 0.25,
@@ -47,7 +47,7 @@ abstract class MainTheme {
         displayMedium: TextStyle(
           color: appColors.textColor,
           fontSize: 48,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.17,
           letterSpacing: 0.25,
@@ -55,7 +55,7 @@ abstract class MainTheme {
         displaySmall: TextStyle(
           color: appColors.textColor,
           fontSize: 39,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.17,
           letterSpacing: 0.25,
@@ -63,7 +63,7 @@ abstract class MainTheme {
         headlineLarge: TextStyle(
           color: appColors.textColor,
           fontSize: 28,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.21,
           letterSpacing: 0.36,
@@ -71,7 +71,7 @@ abstract class MainTheme {
         headlineMedium: TextStyle(
           color: appColors.textColor,
           fontSize: 22,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.27,
           letterSpacing: 0.35,
@@ -79,7 +79,7 @@ abstract class MainTheme {
         headlineSmall: TextStyle(
           color: appColors.textColor,
           fontSize: 20,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.20,
           letterSpacing: 0.38,
@@ -87,7 +87,7 @@ abstract class MainTheme {
         titleLarge: TextStyle(
           color: appColors.textColor,
           fontSize: 17,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.29,
           letterSpacing: -0.41,
@@ -95,7 +95,7 @@ abstract class MainTheme {
         titleMedium: TextStyle(
           color: appColors.textColor,
           fontSize: 16,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w700,
           height: 1.31,
           letterSpacing: -0.32,
@@ -103,7 +103,7 @@ abstract class MainTheme {
         titleSmall: TextStyle(
           color: appColors.textColor,
           fontSize: 16,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.31,
           letterSpacing: -0.32,
@@ -111,7 +111,7 @@ abstract class MainTheme {
         labelLarge: TextStyle(
           color: appColors.textColor,
           fontSize: 16,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
           letterSpacing: -0.24,
@@ -119,7 +119,7 @@ abstract class MainTheme {
         labelMedium: TextStyle(
           color: appColors.textColor,
           fontSize: 15,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w700,
           height: 1.33,
           letterSpacing: -0.24,
@@ -127,7 +127,7 @@ abstract class MainTheme {
         labelSmall: TextStyle(
           color: appColors.textColor,
           fontSize: 15,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
           letterSpacing: -0.24,
@@ -135,7 +135,7 @@ abstract class MainTheme {
         bodyLarge: TextStyle(
           color: appColors.textColor,
           fontSize: 17,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.29,
           letterSpacing: -0.41,
@@ -143,14 +143,14 @@ abstract class MainTheme {
         bodyMedium: TextStyle(
           color: appColors.textColor,
           fontSize: 12,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
         ),
         bodySmall: TextStyle(
           color: appColors.textColor,
           fontSize: 10,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           height: 1.20,
           letterSpacing: 0.07,
         ),
@@ -167,19 +167,22 @@ abstract class MainTheme {
         actionTextColor: appColors.textColor,
         backgroundColor: appColors.secondaryBackground,
         contentTextStyle: const TextStyle(
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
         ),
       ),
       colorScheme: colorScheme,
       inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: const Color(0xFFEFEFEF),
         suffixIconColor: appColors.labelColor,
         prefixIconColor: appColors.labelColor,
-        hintStyle: TextStyle(
-          color: appColors.labelColor,
+        hintStyle: const TextStyle(
+          color: Color(0xFF9B9B9B),
           fontSize: 17,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
-          height: 1.33,
+          height: 1.29,
+          letterSpacing: -0.41,
         ),
         helperStyle: TextStyle(
           color: appColors.labelColor,
@@ -191,62 +194,51 @@ abstract class MainTheme {
         errorStyle: TextStyle(
           color: appColors.error,
           fontSize: 16,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
         ),
-        labelStyle: TextStyle(
-          color: appColors.labelColor,
-          fontSize: 12,
-          fontFamily: AppFonts.inter,
+        labelStyle: const TextStyle(
+          color: Color(0xFF9B9B9B),
+          fontSize: 17,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
-          height: 1.33,
+          height: 1.29,
+          letterSpacing: -0.41,
         ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: appColors.labelColor,
-          ),
-          borderRadius: BorderRadius.zero,
+        border: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppInsets.inputBorderRadius)),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: AppInsets.padding16,
           vertical: AppInsets.padding8,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: appColors.labelColor,
-          ),
-          borderRadius: const BorderRadius.all(
-              Radius.circular(AppInsets.inputBorderRadius)),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppInsets.inputBorderRadius)),
         ),
-        disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: appColors.secondaryBackground,
-          ),
-          borderRadius: const BorderRadius.all(
-              Radius.circular(AppInsets.inputBorderRadius)),
+        disabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppInsets.inputBorderRadius)),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: appColors.primary,
-            width: 2.0,
-          ),
-          borderRadius: const BorderRadius.all(
-              Radius.circular(AppInsets.inputBorderRadius)),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppInsets.inputBorderRadius)),
         ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: appColors.error,
-          ),
-          borderRadius: const BorderRadius.all(
-              Radius.circular(AppInsets.inputBorderRadius)),
+        focusedErrorBorder: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppInsets.inputBorderRadius)),
         ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: appColors.error,
-          ),
-          borderRadius: const BorderRadius.all(
-              Radius.circular(AppInsets.inputBorderRadius)),
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.all(Radius.circular(AppInsets.inputBorderRadius)),
         ),
       ),
       cardTheme: CardTheme(
@@ -270,28 +262,29 @@ abstract class MainTheme {
         selectedItemColor: appColors.primary,
         selectedLabelStyle: const TextStyle(
           fontSize: 12,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
         ),
         unselectedLabelStyle: const TextStyle(
           fontSize: 12,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
         ),
       ),
       appBarTheme: AppBarTheme(
         // centerTitle: defaultTargetPlatform == TargetPlatform.iOS,
+        scrolledUnderElevation: 0.0,
         titleTextStyle: TextStyle(
-          fontSize: 20.0,
+          fontSize: 16.0,
           fontWeight: FontWeight.w700,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           color: appColors.textColor,
         ),
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: appColors.textColor,
+          color: appColors.textColor.withOpacity(0.5),
         ),
         backgroundColor: appColors.primaryBackground,
         shadowColor: Colors.black.withOpacity(0.5),
@@ -312,13 +305,13 @@ abstract class MainTheme {
         unselectedLabelColor: appColors.textColor.withOpacity(0.74),
         labelStyle: const TextStyle(
           fontSize: 12,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w700,
           height: 1.33,
         ),
         unselectedLabelStyle: const TextStyle(
           fontSize: 12,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
         ),
@@ -343,15 +336,17 @@ abstract class MainTheme {
               MaterialStateProperty.all<Color>(const Color(0x10000000)),
           textStyle: MaterialStateProperty.all<TextStyle>(
             const TextStyle(
-              fontFamily: AppFonts.inter,
-              fontWeight: FontWeight.bold,
+              fontFamily: AppFonts.gothamPro,
+              fontWeight: FontWeight.w500,
               color: Colors.black,
             ),
           ),
           minimumSize: MaterialStateProperty.all<Size>(
               const Size(double.infinity, 50.0)),
           shape: MaterialStateProperty.all<OutlinedBorder>(
-            const StadiumBorder(),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppInsets.inputBorderRadius),
+            ),
           ),
           side: MaterialStateProperty.all<BorderSide>(
             BorderSide(
@@ -368,14 +363,14 @@ abstract class MainTheme {
             const TextStyle(
               color: Colors.white,
               fontSize: 17,
-              fontFamily: AppFonts.inter,
-              fontWeight: FontWeight.w700,
+              fontFamily: AppFonts.gothamPro,
+              fontWeight: FontWeight.w500,
               height: 1.29,
               letterSpacing: -0.41,
             ),
           ),
           minimumSize: MaterialStateProperty.all<Size>(
-              const Size(double.infinity, 46.0)),
+              const Size(double.infinity, 50.0)),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (states) {
               if (states.contains(MaterialState.disabled)) {
@@ -387,7 +382,9 @@ abstract class MainTheme {
           foregroundColor:
               MaterialStateProperty.all<Color>(appColors.onPrimary),
           shape: MaterialStateProperty.all<OutlinedBorder>(
-            const StadiumBorder(),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppInsets.inputBorderRadius),
+            ),
           ),
         ),
       ),
@@ -419,7 +416,7 @@ abstract class MainTheme {
         textStyle: TextStyle(
           color: appColors.textColor,
           fontSize: 17,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontWeight: FontWeight.w400,
           height: 1.33,
         ),
@@ -541,6 +538,12 @@ abstract class MainTheme {
       extensions: [
         CustomThemeExtension(appColors: appColors),
       ],
+      bottomAppBarTheme: BottomAppBarTheme(
+        color: appColors.primaryBackground,
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.black,
+        elevation: 16.0,
+      ),
     );
   }
 
@@ -557,7 +560,7 @@ abstract class MainTheme {
         primaryColor: appColors.textColor,
         textStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 17.0,
           letterSpacing: -0.41,
           color: appColors.textColor,
@@ -565,7 +568,7 @@ abstract class MainTheme {
         ),
         actionTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 17.0,
           letterSpacing: -0.41,
           color: appColors.primary,
@@ -573,7 +576,7 @@ abstract class MainTheme {
         ),
         tabLabelTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 10.0,
           fontWeight: FontWeight.w500,
           letterSpacing: -0.24,
@@ -581,7 +584,7 @@ abstract class MainTheme {
         ),
         navActionTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 17.0,
           letterSpacing: -0.41,
           color: appColors.primary,
@@ -589,7 +592,7 @@ abstract class MainTheme {
         ),
         pickerTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 21.0,
           fontWeight: FontWeight.w400,
           letterSpacing: -0.6,
@@ -597,14 +600,14 @@ abstract class MainTheme {
         ),
         dateTimePickerTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 21,
           fontWeight: FontWeight.normal,
           color: appColors.textColor,
         ),
         navTitleTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 17.0,
           fontWeight: FontWeight.w600,
           letterSpacing: -0.41,
@@ -612,7 +615,7 @@ abstract class MainTheme {
         ),
         navLargeTitleTextStyle: TextStyle(
           inherit: false,
-          fontFamily: AppFonts.inter,
+          fontFamily: AppFonts.gothamPro,
           fontSize: 34.0,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.41,

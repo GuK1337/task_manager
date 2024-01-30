@@ -20,8 +20,12 @@ abstract class TaskRepository {
       {required String token, required int taskId});
   Future<DefaultResponse<Task>> setTaskInProgress(
       {required String token, required int taskId});
-  Future<DefaultResponse<Task>> setTaskCompleted(
-      {required String token, required int taskId});
+  Future<DefaultResponse<Task>> setTaskCompleted({
+    required String token,
+    required int taskId,
+    String? resultDescription,
+    List<String>? imagePaths,
+  });
   Future<DefaultResponse<Task>> cancelTask(
       {required String token, required int taskId});
 }
@@ -62,9 +66,18 @@ class TaskRepositoryImpl extends TaskRepository {
       apiService.getNewTasks(token);
 
   @override
-  Future<DefaultResponse<Task>> setTaskCompleted(
-          {required String token, required int taskId}) =>
-      apiService.setTaskCompleted(token: token, taskId: taskId);
+  Future<DefaultResponse<Task>> setTaskCompleted({
+    required String token,
+    required int taskId,
+    String? resultDescription,
+    List<String>? imagePaths,
+  }) =>
+      apiService.setTaskCompleted(
+        token: token,
+        taskId: taskId,
+        resultDescription: resultDescription,
+        imagePaths: imagePaths,
+      );
 
   @override
   Future<DefaultResponse<Task>> setTaskInProgress(

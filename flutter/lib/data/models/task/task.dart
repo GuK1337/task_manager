@@ -17,9 +17,22 @@ class Task with _$Task {
     required TaskStatus status,
     List<String>? images,
     @Default({}) Set<TaskActions> actions,
+    TaskResult? result,
   }) = _Task;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
+}
+
+@freezed
+class TaskResult with _$TaskResult {
+  const factory TaskResult({
+    required int id,
+    String? description,
+    List<String>? images,
+  }) = _TaskResult;
+
+  factory TaskResult.fromJson(Map<String, dynamic> json) =>
+      _$TaskResultFromJson(json);
 }
 
 @freezed

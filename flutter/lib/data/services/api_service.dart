@@ -34,8 +34,12 @@ abstract class ApiService {
       {required String token, required int taskId});
   Future<DefaultResponse<Task>> setTaskInProgress(
       {required String token, required int taskId});
-  Future<DefaultResponse<Task>> setTaskCompleted(
-      {required String token, required int taskId});
+  Future<DefaultResponse<Task>> setTaskCompleted({
+    required String token,
+    required int taskId,
+    String? resultDescription,
+    List<String>? imagePaths,
+  });
   Future<DefaultResponse<Task>> cancelTask(
       {required String token, required int taskId});
 }
@@ -113,23 +117,8 @@ class ApiServiceImpl extends ApiService {
   Future<DefaultResponse<int>> createTask(
       {required String token, required NewTask newTask}) async {
     try {
-      final images = [];
-      for (final imagePath in newTask.imagePaths) {
-        final name = basename(imagePath);
-        String mimeType = mime(name)!;
-        String mimee = mimeType.split('/')[0];
-        String type = mimeType.split('/')[1];
-        images.add(
-          await MultipartFile.fromFile(
-            imagePath,
-            filename: name,
-            contentType: MediaType(mimee, type),
-          ),
-        );
-      }
-
       FormData formData = FormData.fromMap({
-        'images': images,
+        'images': await _prepareImages(newTask.imagePaths),
         'description': newTask.description ?? '',
         'title': newTask.title,
       });
@@ -239,14 +228,26 @@ class ApiServiceImpl extends ApiService {
   }
 
   @override
-  Future<DefaultResponse<Task>> setTaskCompleted(
-      {required String token, required int taskId}) async {
+  Future<DefaultResponse<Task>> setTaskCompleted({
+    required String token,
+    required int taskId,
+    String? resultDescription,
+    List<String>? imagePaths,
+  }) async {
     try {
+      FormData formData = FormData.fromMap({
+        'images': imagePaths != null ? await _prepareImages(imagePaths) : null,
+        'description': resultDescription,
+      });
       final response = await _request(
-        route: 'api/tasks/confirm/$taskId',
-        requestType: RequestType.patch,
-        token: token,
-      );
+          route: 'api/tasks/confirm/$taskId',
+          requestType: RequestType.patch,
+          data: formData,
+          token: token,
+          headers: {"Content-Type": "multipart/form-data"});
+      if (response.hasError) {
+        return ApiResponse.error(response.error);
+      }
       if (response.hasError) {
         return ApiResponse.error(response.error);
       }
@@ -319,5 +320,24 @@ class ApiServiceImpl extends ApiService {
     } catch (e) {
       return ApiResponse.error(CommonResponseError.undefinedError(e));
     }
+  }
+
+  Future<List<MultipartFile>> _prepareImages(
+      final List<String> imagePaths) async {
+    final images = <MultipartFile>[];
+    for (final imagePath in imagePaths) {
+      final name = basename(imagePath);
+      String mimeType = mime(name)!;
+      String mimee = mimeType.split('/')[0];
+      String type = mimeType.split('/')[1];
+      images.add(
+        await MultipartFile.fromFile(
+          imagePath,
+          filename: name,
+          contentType: MediaType(mimee, type),
+        ),
+      );
+    }
+    return images;
   }
 }

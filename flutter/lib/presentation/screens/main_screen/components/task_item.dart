@@ -27,16 +27,40 @@ class TaskItem extends StatelessWidget {
             children: [
               Text(
                 task.title,
-                style: Theme.of(context).textTheme.labelLarge,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
               const SizedBox(
                 height: AppInsets.padding16,
               ),
-              Text(
-                DateFormat('dd.MM.yyyy, HH:mm').format(task.createdAt),
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: Theme.of(context).extension<CustomThemeExtension>()!.labelColor,
-                ),
+              Row(
+                children: [
+                  Text(
+                    DateFormat('dd.MM.yyyy, HH:mm').format(task.createdAt),
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context)
+                              .extension<CustomThemeExtension>()!
+                              .labelColor,
+                        ),
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        task.creator.username,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context)
+                                  .extension<CustomThemeExtension>()!
+                                  .labelColor,
+                            ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ],
           ),

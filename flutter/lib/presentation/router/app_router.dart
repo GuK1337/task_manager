@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/presentation/router/guards/auth_guard.dart';
 import 'package:example_app/presentation/router/guards/init_guard.dart';
+import 'package:example_app/presentation/router/route_builders/modal_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'app_router.gr.dart';
 
@@ -41,6 +42,14 @@ class AppRouter extends $AppRouter {
           initGuard,
           authGuard,
         ]),
+        CustomRoute(
+          page: AddTaskResultRoute.page,
+          guards: [
+            initGuard,
+            authGuard,
+          ],
+          customRouteBuilder: cupertinoModalSheetBuilder,
+        ),
         AutoRoute(
           page: MainRoute.page,
           initial: true,

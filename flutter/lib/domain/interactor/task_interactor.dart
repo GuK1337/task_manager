@@ -19,7 +19,11 @@ abstract class TaskInteractor {
 
   Future<DefaultResponse<bool>> deleteTask(int taskId);
   Future<DefaultResponse<Task>> setTaskInProgress(int taskId);
-  Future<DefaultResponse<Task>> setTaskCompleted(int taskId);
+  Future<DefaultResponse<Task>> setTaskCompleted({
+    required int taskId,
+    String? resultDescription,
+    List<String>? imagePaths,
+  });
   Future<DefaultResponse<Task>> cancelTask(int taskId);
 }
 
@@ -125,13 +129,21 @@ class TaskInteractorImpl implements TaskInteractor {
   }
 
   @override
-  Future<DefaultResponse<Task>> setTaskCompleted(int taskId) async {
+  Future<DefaultResponse<Task>> setTaskCompleted({
+    required int taskId,
+    String? resultDescription,
+    List<String>? imagePaths,
+  }) async {
     final user = authRepository.user;
     if (user == null) {
       return const ApiResponse.error(CommonResponseError.unAuthorized());
     }
     final response = await taskRepository.setTaskCompleted(
-        token: user.token, taskId: taskId);
+      token: user.token,
+      taskId: taskId,
+      resultDescription: resultDescription,
+      imagePaths: imagePaths,
+    );
     if (response.isSuccess) {
       taskChangeNotifier.taskChanged();
     }

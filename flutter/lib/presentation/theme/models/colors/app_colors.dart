@@ -42,7 +42,7 @@ class AppColors with _$AppColors {
   }) = _AppColors;
 
   factory AppColors.base() => const AppColors(
-        primary: Color(0xFF006200),
+        primary: Color(0xFF007CE1),
         onPrimary: Color(0xFFFFFFFF),
         secondary: Color(0xFFF6F6F6),
         onSecondary: Color(0xFF000000),
@@ -51,7 +51,7 @@ class AppColors with _$AppColors {
         secondaryBackground: Color(0xFFF6F6F6),
         error: Color(0xFFFF3B30),
         success: Color(0xFF5BFF83),
-        disabled: Color(0xFF003B00),
+        disabled: Color(0xFF9BBAF1),
         labelColor: Color(0xFFABABAB),
         pink100: Color(0xFFF9B5B5),
         pink200: Color(0xFFF7A0B3),

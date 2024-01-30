@@ -30,6 +30,7 @@ mixin _$Task {
   TaskStatus get status => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
   Set<TaskActions> get actions => throw _privateConstructorUsedError;
+  TaskResult? get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,10 +52,12 @@ abstract class $TaskCopyWith<$Res> {
       String? description,
       TaskStatus status,
       List<String>? images,
-      Set<TaskActions> actions});
+      Set<TaskActions> actions,
+      TaskResult? result});
 
   $TaskUserCopyWith<$Res> get creator;
   $TaskUserCopyWith<$Res>? get executor;
+  $TaskResultCopyWith<$Res>? get result;
 }
 
 /// @nodoc
@@ -80,6 +83,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? status = null,
     Object? images = freezed,
     Object? actions = null,
+    Object? result = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -122,6 +126,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
               as Set<TaskActions>,
+      result: freezed == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TaskResult?,
     ) as $Val);
   }
 
@@ -144,6 +152,18 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
       return _then(_value.copyWith(executor: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TaskResultCopyWith<$Res>? get result {
+    if (_value.result == null) {
+      return null;
+    }
+
+    return $TaskResultCopyWith<$Res>(_value.result!, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -163,12 +183,15 @@ abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
       String? description,
       TaskStatus status,
       List<String>? images,
-      Set<TaskActions> actions});
+      Set<TaskActions> actions,
+      TaskResult? result});
 
   @override
   $TaskUserCopyWith<$Res> get creator;
   @override
   $TaskUserCopyWith<$Res>? get executor;
+  @override
+  $TaskResultCopyWith<$Res>? get result;
 }
 
 /// @nodoc
@@ -191,6 +214,7 @@ class __$$TaskImplCopyWithImpl<$Res>
     Object? status = null,
     Object? images = freezed,
     Object? actions = null,
+    Object? result = freezed,
   }) {
     return _then(_$TaskImpl(
       id: null == id
@@ -233,6 +257,10 @@ class __$$TaskImplCopyWithImpl<$Res>
           ? _value._actions
           : actions // ignore: cast_nullable_to_non_nullable
               as Set<TaskActions>,
+      result: freezed == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TaskResult?,
     ));
   }
 }
@@ -250,7 +278,8 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
       this.description,
       required this.status,
       final List<String>? images,
-      final Set<TaskActions> actions = const {}})
+      final Set<TaskActions> actions = const {},
+      this.result})
       : _images = images,
         _actions = actions;
 
@@ -293,8 +322,11 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
   }
 
   @override
+  final TaskResult? result;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Task(id: $id, creator: $creator, executor: $executor, createdAt: $createdAt, updatedAt: $updatedAt, title: $title, description: $description, status: $status, images: $images, actions: $actions)';
+    return 'Task(id: $id, creator: $creator, executor: $executor, createdAt: $createdAt, updatedAt: $updatedAt, title: $title, description: $description, status: $status, images: $images, actions: $actions, result: $result)';
   }
 
   @override
@@ -311,7 +343,8 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('images', images))
-      ..add(DiagnosticsProperty('actions', actions));
+      ..add(DiagnosticsProperty('actions', actions))
+      ..add(DiagnosticsProperty('result', result));
   }
 
   @override
@@ -332,7 +365,8 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
                 other.description == description) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other._actions, _actions));
+            const DeepCollectionEquality().equals(other._actions, _actions) &&
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
@@ -348,7 +382,8 @@ class _$TaskImpl with DiagnosticableTreeMixin implements _Task {
       description,
       status,
       const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(_actions));
+      const DeepCollectionEquality().hash(_actions),
+      result);
 
   @JsonKey(ignore: true)
   @override
@@ -375,7 +410,8 @@ abstract class _Task implements Task {
       final String? description,
       required final TaskStatus status,
       final List<String>? images,
-      final Set<TaskActions> actions}) = _$TaskImpl;
+      final Set<TaskActions> actions,
+      final TaskResult? result}) = _$TaskImpl;
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
 
@@ -400,8 +436,202 @@ abstract class _Task implements Task {
   @override
   Set<TaskActions> get actions;
   @override
+  TaskResult? get result;
+  @override
   @JsonKey(ignore: true)
   _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TaskResult _$TaskResultFromJson(Map<String, dynamic> json) {
+  return _TaskResult.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TaskResult {
+  int get id => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TaskResultCopyWith<TaskResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TaskResultCopyWith<$Res> {
+  factory $TaskResultCopyWith(
+          TaskResult value, $Res Function(TaskResult) then) =
+      _$TaskResultCopyWithImpl<$Res, TaskResult>;
+  @useResult
+  $Res call({int id, String? description, List<String>? images});
+}
+
+/// @nodoc
+class _$TaskResultCopyWithImpl<$Res, $Val extends TaskResult>
+    implements $TaskResultCopyWith<$Res> {
+  _$TaskResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? description = freezed,
+    Object? images = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TaskResultImplCopyWith<$Res>
+    implements $TaskResultCopyWith<$Res> {
+  factory _$$TaskResultImplCopyWith(
+          _$TaskResultImpl value, $Res Function(_$TaskResultImpl) then) =
+      __$$TaskResultImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String? description, List<String>? images});
+}
+
+/// @nodoc
+class __$$TaskResultImplCopyWithImpl<$Res>
+    extends _$TaskResultCopyWithImpl<$Res, _$TaskResultImpl>
+    implements _$$TaskResultImplCopyWith<$Res> {
+  __$$TaskResultImplCopyWithImpl(
+      _$TaskResultImpl _value, $Res Function(_$TaskResultImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? description = freezed,
+    Object? images = freezed,
+  }) {
+    return _then(_$TaskResultImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TaskResultImpl with DiagnosticableTreeMixin implements _TaskResult {
+  const _$TaskResultImpl(
+      {required this.id, this.description, final List<String>? images})
+      : _images = images;
+
+  factory _$TaskResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaskResultImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String? description;
+  final List<String>? _images;
+  @override
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TaskResult(id: $id, description: $description, images: $images)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'TaskResult'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('images', images));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TaskResultImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other._images, _images));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, description,
+      const DeepCollectionEquality().hash(_images));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TaskResultImplCopyWith<_$TaskResultImpl> get copyWith =>
+      __$$TaskResultImplCopyWithImpl<_$TaskResultImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TaskResultImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TaskResult implements TaskResult {
+  const factory _TaskResult(
+      {required final int id,
+      final String? description,
+      final List<String>? images}) = _$TaskResultImpl;
+
+  factory _TaskResult.fromJson(Map<String, dynamic> json) =
+      _$TaskResultImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String? get description;
+  @override
+  List<String>? get images;
+  @override
+  @JsonKey(ignore: true)
+  _$$TaskResultImplCopyWith<_$TaskResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

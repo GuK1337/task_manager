@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/task/task.dart';
 import 'package:example_app/domain/interactor/task_interactor.dart';
 import 'package:example_app/utils/dio_error_handler/messages/messages.dart';
@@ -39,12 +38,19 @@ class TaskInfoCubit extends SrCubit<TaskInfoState, TaskInfoSr> {
     addSr(const TaskInfoSr.success());
   }
 
-  Future<void> confirm() async {
+  Future<void> confirm({
+    String? resultDescription,
+    List<String>? imagePaths,
+  }) async {
     if (state.status == TaskInfoStatus.loading) {
       return;
     }
     emit(state.copyWith(status: TaskInfoStatus.loading));
-    final response = await taskInteractor.setTaskCompleted(state.task.id);
+    final response = await taskInteractor.setTaskCompleted(
+      taskId: state.task.id,
+      resultDescription: resultDescription,
+      imagePaths: imagePaths,
+    );
     if (response.hasError) {
       addError(response.error);
       addSr(TaskInfoSr.error(ErrorMessages.getMessage(response.error)));

@@ -84,7 +84,7 @@ class _GalleryPhotoViewWrapperState extends State<ImagePreviewScreen> {
     return PhotoViewGalleryPageOptions(
       imageProvider: CachedNetworkImageProvider(imageUrl),
       initialScale: PhotoViewComputedScale.contained,
-      minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
+      minScale: PhotoViewComputedScale.contained,
       maxScale: PhotoViewComputedScale.covered * 4.1,
       heroAttributes: PhotoViewHeroAttributes(tag: imageUrl),
     );

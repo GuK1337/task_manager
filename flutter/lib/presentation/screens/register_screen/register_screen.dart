@@ -41,7 +41,9 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
               children: [
                 Text(
                   'РЕГИСТРАЦИЯ',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
                 const SizedBox(
                   height: AppInsets.padding16,
@@ -50,7 +52,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   name: _RegisterFormKeys.login,
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
-                    labelText: 'Логин',
+                    hintText: 'Логин',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -64,7 +66,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   name: _RegisterFormKeys.username,
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
-                    labelText: 'Имя пользователя',
+                    hintText: 'Имя пользователя',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -81,7 +83,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   name: _RegisterFormKeys.password,
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
-                    labelText: 'Пароль',
+                    hintText: 'Пароль',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -99,7 +101,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   name: _RegisterFormKeys.password2,
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
-                    labelText: 'Повторите пароль',
+                    hintText: 'Повторите пароль',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),

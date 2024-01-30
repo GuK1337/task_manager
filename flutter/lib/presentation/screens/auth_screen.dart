@@ -37,7 +37,9 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
               children: [
                 Text(
                   'ВХОД',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
                 const SizedBox(
                   height: AppInsets.padding16,
@@ -46,7 +48,7 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                   name: _AuthFormKeys.login,
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
-                    labelText: 'Логин',
+                    hintText: 'Логин',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -63,7 +65,7 @@ class AuthScreen extends StatelessWidget implements AutoRouteWrapper {
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: const InputDecoration(
-                    labelText: 'Пароль',
+                    hintText: 'Пароль',
                   ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
