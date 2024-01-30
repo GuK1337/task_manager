@@ -23,6 +23,7 @@ mixin _$NewTask {
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   List<String> get imagePaths => throw _privateConstructorUsedError;
+  ShortUserInfo? get executor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,13 @@ abstract class $NewTaskCopyWith<$Res> {
   factory $NewTaskCopyWith(NewTask value, $Res Function(NewTask) then) =
       _$NewTaskCopyWithImpl<$Res, NewTask>;
   @useResult
-  $Res call({String title, String? description, List<String> imagePaths});
+  $Res call(
+      {String title,
+      String? description,
+      List<String> imagePaths,
+      ShortUserInfo? executor});
+
+  $ShortUserInfoCopyWith<$Res>? get executor;
 }
 
 /// @nodoc
@@ -53,6 +60,7 @@ class _$NewTaskCopyWithImpl<$Res, $Val extends NewTask>
     Object? title = null,
     Object? description = freezed,
     Object? imagePaths = null,
+    Object? executor = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -67,7 +75,23 @@ class _$NewTaskCopyWithImpl<$Res, $Val extends NewTask>
           ? _value.imagePaths
           : imagePaths // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      executor: freezed == executor
+          ? _value.executor
+          : executor // ignore: cast_nullable_to_non_nullable
+              as ShortUserInfo?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ShortUserInfoCopyWith<$Res>? get executor {
+    if (_value.executor == null) {
+      return null;
+    }
+
+    return $ShortUserInfoCopyWith<$Res>(_value.executor!, (value) {
+      return _then(_value.copyWith(executor: value) as $Val);
+    });
   }
 }
 
@@ -78,7 +102,14 @@ abstract class _$$NewTaskImplCopyWith<$Res> implements $NewTaskCopyWith<$Res> {
       __$$NewTaskImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String? description, List<String> imagePaths});
+  $Res call(
+      {String title,
+      String? description,
+      List<String> imagePaths,
+      ShortUserInfo? executor});
+
+  @override
+  $ShortUserInfoCopyWith<$Res>? get executor;
 }
 
 /// @nodoc
@@ -95,6 +126,7 @@ class __$$NewTaskImplCopyWithImpl<$Res>
     Object? title = null,
     Object? description = freezed,
     Object? imagePaths = null,
+    Object? executor = freezed,
   }) {
     return _then(_$NewTaskImpl(
       title: null == title
@@ -109,6 +141,10 @@ class __$$NewTaskImplCopyWithImpl<$Res>
           ? _value._imagePaths
           : imagePaths // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      executor: freezed == executor
+          ? _value.executor
+          : executor // ignore: cast_nullable_to_non_nullable
+              as ShortUserInfo?,
     ));
   }
 }
@@ -119,7 +155,8 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
   const _$NewTaskImpl(
       {required this.title,
       this.description,
-      required final List<String> imagePaths})
+      required final List<String> imagePaths,
+      this.executor})
       : _imagePaths = imagePaths;
 
   factory _$NewTaskImpl.fromJson(Map<String, dynamic> json) =>
@@ -138,8 +175,11 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
   }
 
   @override
+  final ShortUserInfo? executor;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NewTask(title: $title, description: $description, imagePaths: $imagePaths)';
+    return 'NewTask(title: $title, description: $description, imagePaths: $imagePaths, executor: $executor)';
   }
 
   @override
@@ -149,7 +189,8 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
       ..add(DiagnosticsProperty('type', 'NewTask'))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('imagePaths', imagePaths));
+      ..add(DiagnosticsProperty('imagePaths', imagePaths))
+      ..add(DiagnosticsProperty('executor', executor));
   }
 
   @override
@@ -161,13 +202,15 @@ class _$NewTaskImpl with DiagnosticableTreeMixin implements _NewTask {
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
-                .equals(other._imagePaths, _imagePaths));
+                .equals(other._imagePaths, _imagePaths) &&
+            (identical(other.executor, executor) ||
+                other.executor == executor));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, description,
-      const DeepCollectionEquality().hash(_imagePaths));
+      const DeepCollectionEquality().hash(_imagePaths), executor);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +230,8 @@ abstract class _NewTask implements NewTask {
   const factory _NewTask(
       {required final String title,
       final String? description,
-      required final List<String> imagePaths}) = _$NewTaskImpl;
+      required final List<String> imagePaths,
+      final ShortUserInfo? executor}) = _$NewTaskImpl;
 
   factory _NewTask.fromJson(Map<String, dynamic> json) = _$NewTaskImpl.fromJson;
 
@@ -197,6 +241,8 @@ abstract class _NewTask implements NewTask {
   String? get description;
   @override
   List<String> get imagePaths;
+  @override
+  ShortUserInfo? get executor;
   @override
   @JsonKey(ignore: true)
   _$$NewTaskImplCopyWith<_$NewTaskImpl> get copyWith =>

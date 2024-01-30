@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:example_app/data/models/new_task/new_task.dart';
+import 'package:example_app/data/models/short_user_info/short_user_info.dart';
 import 'package:example_app/domain/bloc/create_new_task_cubit/create_new_task_cubit.dart';
+import 'package:example_app/presentation/router/app_router.gr.dart';
 import 'package:example_app/presentation/theme/models/app_insets.dart';
 import 'package:example_app/presentation/theme/models/colors/app_colors.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
@@ -18,6 +20,7 @@ abstract class _TaskFormKeys {
   static const _title = 'title';
   static const _description = 'description';
   static const _image = 'image';
+  static const _executor = 'executor';
 }
 
 @RoutePage()
@@ -55,6 +58,7 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                     decoration: const InputDecoration(
                       hintText: 'Наименование',
                     ),
+                    valueTransformer: (value) => value?.trim(),
                     validator: FormBuilderValidators.compose(
                       [
                         FormBuilderValidators.required(),
@@ -81,6 +85,7 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                     decoration: const InputDecoration(
                       hintText: 'Описание',
                     ),
+                    valueTransformer: (value) => value?.trim(),
                     validator: FormBuilderValidators.required(),
                   ),
                   const SizedBox(
@@ -159,7 +164,67 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                     maxImages: 10,
                     cameraLabel: const Text('Камера'),
                     galleryLabel: const Text('Галерея'),
-                  )
+                  ),
+                  const SizedBox(
+                    height: AppInsets.padding24,
+                  ),
+                  Text(
+                    'Исполнитель',
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
+                  const SizedBox(
+                    height: AppInsets.padding16,
+                  ),
+                  FormBuilderField<ShortUserInfo>(
+                    builder: (field) {
+                      if (field.value == null) {
+                        return ListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              AppInsets.inputBorderRadius,
+                            ),
+                          ),
+                          onTap: () async {
+                            final result =
+                                await context.router.push(UserListRoute());
+                            if (result is ShortUserInfo && field.mounted) {
+                              field.didChange(result);
+                            }
+                          },
+                          title: const Text('Выберите исполнителя'),
+                          trailing: const Icon(
+                            CupertinoIcons.right_chevron,
+                          ),
+                        );
+                      }
+                      return ListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            AppInsets.inputBorderRadius,
+                          ),
+                        ),
+                        contentPadding: const EdgeInsets.only(
+                          left: AppInsets.padding16,
+                          right: 0.0,
+                        ),
+                        textColor: Theme.of(context).colorScheme.onPrimary,
+                        tileColor: Theme.of(context).colorScheme.primary,
+                        title: Text(field.value!.username),
+                        iconColor: Theme.of(context).colorScheme.onPrimary,
+                        trailing: IconButton(
+                          onPressed: () {
+                            field.didChange(null);
+                          },
+                          icon: const Icon(
+                            CupertinoIcons.clear_circled_solid,
+                          ),
+                        ),
+                      );
+                    },
+                    name: _TaskFormKeys._executor,
+                  ),
                 ],
               )),
               Padding(
@@ -194,6 +259,8 @@ class TaskFormScreen extends StatelessWidget implements AutoRouteWrapper {
                                             ?.map((e) => (e as XFile).path)
                                             .toList() ??
                                         [],
+                                    executor: value[_TaskFormKeys._executor]
+                                        as ShortUserInfo?,
                                   ),
                                 );
                           }

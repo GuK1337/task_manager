@@ -51,7 +51,10 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                   child: CustomScrollView(
                     slivers: [
                       SliverPadding(
-                        padding: const EdgeInsets.all(AppInsets.padding16),
+                        padding:
+                            const EdgeInsets.all(AppInsets.padding16).copyWith(
+                          bottom: 0.0,
+                        ),
                         sliver: SliverList.list(children: [
                           Text(
                             "Автор",
@@ -97,9 +100,6 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                             Text(
                               task.description!,
                             ),
-                            const SizedBox(
-                              height: AppInsets.padding16,
-                            ),
                           ],
                         ]),
                       ),
@@ -107,7 +107,8 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                         SliverPadding(
                           padding: const EdgeInsets.all(AppInsets.padding16)
                               .copyWith(
-                            top: 0.0,
+                            top: AppInsets.padding24,
+                            bottom: 0.0,
                           ),
                           sliver: SliverGrid.builder(
                             gridDelegate:
@@ -128,35 +129,44 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                             itemCount: task.images!.length,
                           ),
                         ),
+                      if (task.executor != null)
+                        SliverPadding(
+                          padding: const EdgeInsets.all(AppInsets.padding16)
+                              .copyWith(
+                            top: AppInsets.padding24,
+                            bottom: 0.0,
+                          ),
+                          sliver: SliverList.list(
+                            children: [
+                              Text(
+                                "Исполнитель",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      color: Theme.of(context)
+                                          .extension<CustomThemeExtension>()!
+                                          .labelColor,
+                                    ),
+                              ),
+                              const SizedBox(
+                                height: AppInsets.padding8,
+                              ),
+                              Text(
+                                task.executor?.username ?? '',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ],
+                          ),
+                        ),
                       if (task.result != null)
                         SliverPadding(
                           padding: const EdgeInsets.all(AppInsets.padding16)
                               .copyWith(
                             top: AppInsets.padding24,
-                            bottom: AppInsets.padding8,
+                            bottom: 0.0,
                           ),
                           sliver: SliverList.list(children: [
-                            Text(
-                              "Исполнитель",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    color: Theme.of(context)
-                                        .extension<CustomThemeExtension>()!
-                                        .labelColor,
-                                  ),
-                            ),
-                            const SizedBox(
-                              height: AppInsets.padding8,
-                            ),
-                            Text(
-                              task.executor?.username ?? '',
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            const SizedBox(
-                              height: AppInsets.padding24,
-                            ),
                             Text(
                               'Результат выполнения',
                               style: Theme.of(context)
@@ -186,7 +196,8 @@ class TaskInfoScreen extends StatelessWidget implements AutoRouteWrapper {
                         SliverPadding(
                           padding: const EdgeInsets.all(AppInsets.padding16)
                               .copyWith(
-                            top: 0.0,
+                            top: AppInsets.padding24,
+                            bottom: 0.0,
                           ),
                           sliver: SliverGrid.builder(
                             gridDelegate:

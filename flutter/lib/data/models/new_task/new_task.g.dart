@@ -13,6 +13,9 @@ _$NewTaskImpl _$$NewTaskImplFromJson(Map<String, dynamic> json) =>
       imagePaths: (json['imagePaths'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      executor: json['executor'] == null
+          ? null
+          : ShortUserInfo.fromJson(json['executor'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$NewTaskImplToJson(_$NewTaskImpl instance) =>
@@ -20,4 +23,5 @@ Map<String, dynamic> _$$NewTaskImplToJson(_$NewTaskImpl instance) =>
       'title': instance.title,
       'description': instance.description,
       'imagePaths': instance.imagePaths,
+      'executor': instance.executor?.toJson(),
     };

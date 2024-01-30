@@ -54,6 +54,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   decoration: const InputDecoration(
                     hintText: 'Логин',
                   ),
+                  valueTransformer: (value) => value?.trim(),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.maxLength(255),
@@ -68,6 +69,7 @@ class RegisterScreen extends StatelessWidget implements AutoRouteWrapper {
                   decoration: const InputDecoration(
                     hintText: 'Имя пользователя',
                   ),
+                  valueTransformer: (value) => value?.trim(),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.maxLength(255),

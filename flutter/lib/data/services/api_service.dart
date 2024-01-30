@@ -3,6 +3,7 @@ import 'package:example_app/data/const/injectable_names.dart';
 import 'package:example_app/data/models/auth_response/auth_response.dart';
 import 'package:example_app/data/models/new_task/new_task.dart';
 import 'package:example_app/data/models/register_response/register_response.dart';
+import 'package:example_app/data/models/short_user_info/short_user_info.dart';
 import 'package:example_app/data/models/task/task.dart';
 import 'package:example_app/data/models/user/user.dart';
 import 'package:example_app/utils/dio_error_handler/dio_error_handler.dart';
@@ -19,6 +20,8 @@ abstract class ApiService {
   Future<DefaultResponse<User>> auth(AuthResponse data);
   Future<DefaultResponse<User>> register(RegisterResponse data);
   Future<DefaultResponse<User>> checkUser(User user);
+  Future<DefaultResponse<List<ShortUserInfo>>> userList(String token,
+      [String? query]);
 
   Future<DefaultResponse<int>> createTask({
     required String token,
@@ -121,6 +124,7 @@ class ApiServiceImpl extends ApiService {
         'images': await _prepareImages(newTask.imagePaths),
         'description': newTask.description ?? '',
         'title': newTask.title,
+        'executorId': newTask.executor?.id,
       });
       final response = await _request(
           route: 'api/tasks/create',
@@ -280,9 +284,13 @@ class ApiServiceImpl extends ApiService {
     RequestType requestType = RequestType.get,
     dynamic data,
     Map<String, String>? headers,
+    Map<String, String>? query,
     String? token,
   }) async {
     try {
+      if (query?.isNotEmpty == true) {
+        route = Uri.parse(route).replace(queryParameters: query).toString();
+      }
       final response = await errorHandler.processRequest<Response>(
         () => dio.request(
           route,
@@ -339,5 +347,31 @@ class ApiServiceImpl extends ApiService {
       );
     }
     return images;
+  }
+
+  @override
+  Future<DefaultResponse<List<ShortUserInfo>>> userList(String token,
+      [String? query]) async {
+    try {
+      final response = await _request(
+          route: 'api/users/list',
+          requestType: RequestType.get,
+          token: token,
+          query: query != null
+              ? {
+                  'query': query,
+                }
+              : null);
+      if (response.hasError) {
+        return ApiResponse.error(response.error);
+      }
+      return ApiResponse.success(
+        (response.result as Iterable)
+            .map((e) => ShortUserInfo.fromJson(e))
+            .toList(),
+      );
+    } catch (e) {
+      return ApiResponse.error(CommonResponseError.undefinedError(e));
+    }
   }
 }

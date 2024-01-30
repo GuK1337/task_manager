@@ -1,3 +1,4 @@
+import 'package:example_app/data/models/short_user_info/short_user_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -10,6 +11,7 @@ class NewTask with _$NewTask {
     required String title,
     String? description,
     required List<String> imagePaths,
+    ShortUserInfo? executor,
   }) = _NewTask;
 
   factory NewTask.fromJson(Map<String, dynamic> json) =>

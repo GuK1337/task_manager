@@ -34,6 +34,10 @@ class AppRouter extends $AppRouter {
           initGuard,
           authGuard,
         ]),
+        AutoRoute(page: UserListRoute.page, guards: [
+          initGuard,
+          authGuard,
+        ]),
         AutoRoute(page: TaskInfoRoute.page, guards: [
           initGuard,
           authGuard,
