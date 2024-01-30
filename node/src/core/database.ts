@@ -111,11 +111,7 @@ export class Task extends Model {
     @Column(DataType.ENUM(TaskStatus.new, TaskStatus.inProgress, TaskStatus.completed))
     declare status: string;
 
-    @HasOne(() => TaskResult, {
-        foreignKey: 'taskId',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-    })
+    @HasOne(() => TaskResult, 'taskId')
     declare result?: NonAttribute<TaskResult>;
 }
 
@@ -136,12 +132,15 @@ export class TaskResult extends Model {
     @Column(DataType.ARRAY(DataType.STRING))
     declare images: string[];
 
-    @AllowNull(false)
+
     @ForeignKey(() => Task)
     @Column
     declare taskId: number;
 
-    @BelongsTo(() => Task, "taskId")
+    @BelongsTo(() => Task, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+    })
     declare task: Task;
 }
 
